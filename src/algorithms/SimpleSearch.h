@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Algorithm.h"
-#include "AlgData.h"
 
 class SimpleSearch : public Algorithm
 {

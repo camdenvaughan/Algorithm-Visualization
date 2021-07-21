@@ -1,2 +1,22 @@
-﻿  Application.cpp
+﻿  QuickSort.cpp
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(37,70): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(39,68): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(40,20): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(76,20): warning C4018: '<': signed/unsigned mismatch
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

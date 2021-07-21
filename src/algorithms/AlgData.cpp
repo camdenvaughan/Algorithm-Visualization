@@ -13,12 +13,13 @@ AlgData::AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Fon
     m_Sprite.setPosition(position);
 
     m_Text.setFont(font);
+    m_Text.setFillColor(sf::Color::Black);
     m_Text.setPosition(position);
     m_Text.setString(std::to_string(value));
 
 };
 
-sf::Sprite AlgData::GetSprite()
+void AlgData::Draw(sf::RenderWindow& window)
 {
     switch (m_State)
     {
@@ -34,17 +35,9 @@ sf::Sprite AlgData::GetSprite()
         m_Sprite.setTextureRect(m_SuccessfullCoords);
         break;
     }
-    return m_Sprite;
-}
-
-sf::Text AlgData::GetText() const
-{
-    return m_Text;
-}
-
-sf::Vector2f AlgData::GetPosition() const
-{
-    return m_Position;
+    m_Text.setString(std::to_string(m_Value));
+    window.draw(m_Sprite);
+    window.draw(m_Text);
 }
 
 sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
@@ -52,12 +45,24 @@ sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
     sf::Vector2f oldPosition = m_Position;
     m_Position = position;
     m_Sprite.setPosition(position);
+    m_Text.setPosition(position);
     return oldPosition;
+}
+
+sf::Vector2f AlgData::GetPositon() const
+{
+    return m_Position;
 }
 
 int AlgData::GetValue() const
 {
     return m_Value;
+}
+int AlgData::SetValue(int value)
+{
+    int oldValue = m_Value;
+    m_Value = value;
+    return oldValue;
 }
 
 void AlgData::SetSearchState(State state)

@@ -149,6 +149,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\algorithms\QuickSort.cpp" />
+    <ClCompile Include="src\algorithms\SelectionSort.cpp" />
     <ClCompile Include="src\algorithms\SimpleSearch.cpp" />
     <ClCompile Include="src\algorithms\BinarySearch.cpp" />
     <ClCompile Include="src\algorithms\AlgData.cpp" />
@@ -156,11 +158,14 @@
     <ClCompile Include="src\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\algorithms\QuickSort.h" />
+    <ClInclude Include="src\algorithms\SelectionSort.h" />
     <ClInclude Include="src\algorithms\Algorithm.h" />
     <ClInclude Include="src\algorithms\SimpleSearch.h" />
     <ClInclude Include="src\algorithms\BinarySearch.h" />
     <ClInclude Include="src\algorithms\AlgData.h" />
     <ClInclude Include="src\Helpers.h" />
+    <ClInclude Include="src\Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

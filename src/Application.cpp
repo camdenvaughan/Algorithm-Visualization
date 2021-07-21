@@ -1,15 +1,24 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <ctime>
 
+#include "Renderer.h"
 #include "algorithms/AlgData.h"
 #include "algorithms/BinarySearch.h"
 #include "algorithms/SimpleSearch.h"
+#include "algorithms/SelectionSort.h"
+#include "algorithms/QuickSort.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!", sf::Style::Default);
+    srand((unsigned int)time(NULL));
 
+    unsigned int windowWidth = 2000;
+    unsigned int windowHeight = 1300;
+
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Algorithms", sf::Style::Default);
     sf::Texture texture;
     if (!texture.loadFromFile("res/textures/textures.png"))
     {
@@ -23,20 +32,20 @@ int main()
     }
 
     std::vector<AlgData> data;
-    data.reserve(30);
-    sf::Vector2f position = sf::Vector2f(0.0f, 10.f);
-    for (int i = 0; i < 30; i++)
-    {
-        data.emplace_back(i, position, texture, font);
+    int vectorSize = 30;
+    data.reserve(vectorSize);
 
-        position.x += 64.f;
-        if (position.x > 950)
-        {
-            position.x = 0.0f;
-            position.y += 65.0f;
-        }
+    std::vector<int> valueVector;
+    for (int i = 0; i < vectorSize; i++)
+    {
+        valueVector.push_back(i);
     }
 
+    std::random_shuffle(valueVector.begin(), valueVector.end());
+
+    for (int i = 0; i < 30; i++)
+        data.emplace_back(valueVector[i], sf::Vector2f(0.0f, 10.f), texture, font);
+    Helpers::OrganizePositions(data, sf::Vector2f(0.0f, 10.f));
 
     while (window.isOpen())
     {
@@ -47,39 +56,64 @@ int main()
                 window.close();
             if (event.type == sf::Event::KeyReleased)
             {
+                // Randomize Items
                 if (event.key.code == sf::Keyboard::Space)
                 {
-                    // Binary Search
-                    BinarySearch search(data, window);
-                    for (AlgData obj : data)
+                    for (AlgData& obj : data)
                         obj.SetSearchState(State::EMPTY);
-                    search.OnRun(29, sf::milliseconds(100));
-                }                
-                if (event.key.code == sf::Keyboard::A)
+                    std::random_shuffle(valueVector.begin(), valueVector.end());
+                    for (int i = 0; i < valueVector.size(); i++)
+                        data[i].SetValue(valueVector[i]);
+                }
+                // Binary Search
+                if (event.key.code == sf::Keyboard::Q)
                 {
-                    // Simple Search
-                    SimpleSearch search(data, window);
-                    for (AlgData obj : data)
+                    BinarySearch search(data, window);
+                    for (AlgData& obj : data)
                         obj.SetSearchState(State::EMPTY);
                     search.OnRun(29, sf::milliseconds(100));
                 }
+                // Simple Search
+                if (event.key.code == sf::Keyboard::W)
+                {
+                    SimpleSearch search(data, window);
+                    for (AlgData& obj : data)
+                        obj.SetSearchState(State::EMPTY);
+                    search.OnRun(29, sf::milliseconds(100));
+
+                }
+                // Selection Sort
+                if (event.key.code == sf::Keyboard::E)
+                {
+                    for (AlgData& obj : data)
+                        obj.SetSearchState(State::EMPTY);
+                    SelectionSort sort(data, window);
+                    sort.OnRun(10, sf::milliseconds(100));
+                }
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    for (AlgData& obj : data)
+                        obj.SetSearchState(State::EMPTY);
+                    QuickSort sort(data, window);
+                    sort.OnRun(10, sf::milliseconds(100));
+                    for (AlgData& obj : data)
+                        std::cout << obj.GetValue() << ", ";
+                    std::cout << std::endl;
+                }
+                // Reset Items
                 if (event.key.code == sf::Keyboard::R)
                 {
                     for (AlgData& obj : data)
                         obj.SetSearchState(State::EMPTY);
                     std::cout << "reset" << std::endl;
                 }
+
+
             }
        
         }
 
-        window.clear();
-        for (size_t i = 0; i < data.size(); i++)
-        {
-            window.draw(data[i].GetSprite());
-            window.draw(data[i].GetText());
-        }
-        window.display();
+        Renderer::DrawVector(window, data);
     }
 
     return 0;

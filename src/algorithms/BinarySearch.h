@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Algorithm.h"
-#include "AlgData.h"
+
 class BinarySearch : public Algorithm
 {
 public:

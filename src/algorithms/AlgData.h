@@ -23,15 +23,15 @@ private:
 public:
     AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Font& font);
 
-    sf::Sprite GetSprite();
-    
-    sf::Text GetText() const;
-
-    sf::Vector2f GetPosition() const;
+    void Draw(sf::RenderWindow& window);
 
     sf::Vector2f UpdatePositon(sf::Vector2f& position);
 
+    sf::Vector2f GetPositon() const;
+
     int GetValue() const;
+
+    int SetValue(int value);
 
     void SetSearchState(State state);
 };

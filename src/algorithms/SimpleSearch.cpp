@@ -1,5 +1,4 @@
 #include "SimpleSearch.h"
-#include "../Helpers.h"
 
 #include <iostream>
 
@@ -26,12 +25,9 @@ void SimpleSearch::OnRun(int value, sf::Time waitTime)
 			++i;
 		}
 
-		m_Window->clear();
-		for (size_t i = 0; i < m_Data.size(); i++)
-			m_Window->draw(m_Data[i].GetSprite());
-		m_Window->display();
+		Renderer::DrawVector(*m_Window, m_Data);
 
-		Wait(waitTime);
+		Helpers::Wait(waitTime);
 	}
 	std::cout << "Could not find" << std::endl;
 }
