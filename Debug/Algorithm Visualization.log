@@ -1,0 +1,6 @@
+﻿  Application.cpp
+  BinarySearch.cpp
+  SimpleSearch.cpp
+E:\C++ Projects\Algorithm Visualization\src\algorithms\SimpleSearch.cpp(15,11): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm Visualization\Debug\Algorithm Visualization.exe
