@@ -1,1 +1,2 @@
 E:\C++ Projects\Algorithm Visualization\Debug\Algorithm Visualization.exe
+E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

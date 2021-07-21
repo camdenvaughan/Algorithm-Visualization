@@ -16,15 +16,19 @@ int main()
         std::cout << "Texture failed to load" << std::endl;
     }
 
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
+    sf::Font font;
+    if (!font.loadFromFile("res/fonts/coolvetica/coolvetica rg.ttf"))
+    {
+        std::cout << "Font failed to load" << std::endl;
+    }
 
     std::vector<AlgData> data;
     data.reserve(30);
     sf::Vector2f position = sf::Vector2f(0.0f, 10.f);
     for (int i = 0; i < 30; i++)
     {
-        data.emplace_back(i, position);
+        data.emplace_back(i, position, texture, font);
+
         position.x += 64.f;
         if (position.x > 950)
         {
@@ -46,18 +50,18 @@ int main()
                 if (event.key.code == sf::Keyboard::Space)
                 {
                     // Binary Search
-                    BinarySearch search(window, sprite, data);
+                    BinarySearch search(data, window);
                     for (AlgData obj : data)
                         obj.SetSearchState(State::EMPTY);
-                    search.OnRun(29);
+                    search.OnRun(29, sf::milliseconds(100));
                 }                
                 if (event.key.code == sf::Keyboard::A)
                 {
                     // Simple Search
-                    SimpleSearch search(window, sprite, data);
+                    SimpleSearch search(data, window);
                     for (AlgData obj : data)
                         obj.SetSearchState(State::EMPTY);
-                    search.OnRun(6);
+                    search.OnRun(29, sf::milliseconds(100));
                 }
                 if (event.key.code == sf::Keyboard::R)
                 {
@@ -70,14 +74,10 @@ int main()
         }
 
         window.clear();
-
-        // draw
         for (size_t i = 0; i < data.size(); i++)
         {
-            sprite.setTextureRect(data[i].GetTexCoords());
-            sprite.setPosition(data[i].GetPosition());
-            window.draw(sprite);
-
+            window.draw(data[i].GetSprite());
+            window.draw(data[i].GetText());
         }
         window.display();
     }

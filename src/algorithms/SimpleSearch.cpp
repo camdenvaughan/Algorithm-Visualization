@@ -4,12 +4,13 @@
 #include <iostream>
 
 
-SimpleSearch::SimpleSearch(sf::RenderWindow& window, sf::Sprite& sprite, std::vector<AlgData>& data)
-	: m_Window(&window), m_Sprite(&sprite), m_Data(data)
+SimpleSearch::SimpleSearch(std::vector<AlgData>& data, sf::RenderWindow& window)
+	: m_Data(data)
 {
+	m_Window = &window;
 }
 
-void SimpleSearch::OnRun(int value)
+void SimpleSearch::OnRun(int value, sf::Time waitTime)
 {
 	int i = 0;
 	while (i < m_Data.size())
@@ -25,14 +26,12 @@ void SimpleSearch::OnRun(int value)
 			++i;
 		}
 
+		m_Window->clear();
 		for (size_t i = 0; i < m_Data.size(); i++)
-		{
-			m_Sprite->setTextureRect(m_Data[i].GetTexCoords());
-			m_Sprite->setPosition(m_Data[i].GetPosition());
-			m_Window->draw(*m_Sprite);
-		}
+			m_Window->draw(m_Data[i].GetSprite());
 		m_Window->display();
-		Wait(sf::seconds(1.0f));
+
+		Wait(waitTime);
 	}
 	std::cout << "Could not find" << std::endl;
 }

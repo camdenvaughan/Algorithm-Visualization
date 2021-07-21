@@ -3,11 +3,12 @@
 
 #include <iostream>
 
-BinarySearch::BinarySearch(sf::RenderWindow& window, sf::Sprite& sprite, std::vector<AlgData>& data)
-    : m_Window(&window), m_Sprite(&sprite), m_Data(data)
+BinarySearch::BinarySearch(std::vector<AlgData>& data, sf::RenderWindow& window)
+    : m_Data(data)
 {
+    m_Window = &window;
 }
-void BinarySearch::OnRun(int value)
+void BinarySearch::OnRun(int value, sf::Time waitTime)
 {
     int low = 0;
     int high = m_Data.size() - 1;
@@ -24,11 +25,7 @@ void BinarySearch::OnRun(int value)
 
         m_Window->clear();
         for (size_t i = 0; i < m_Data.size(); i++)
-        {
-            m_Sprite->setTextureRect(m_Data[i].GetTexCoords());
-            m_Sprite->setPosition(m_Data[i].GetPosition());
-            m_Window->draw(*m_Sprite);
-        }
+            m_Window->draw(m_Data[i].GetSprite());
         m_Window->display();
 
         if (m_Data[mid].GetValue() > value)
@@ -40,7 +37,7 @@ void BinarySearch::OnRun(int value)
             low = mid + 1;
         }
 
-        Wait(sf::seconds(1.0f));
+        Wait(waitTime);
     }
     std::cout << "Could not find" << std::endl;
 }

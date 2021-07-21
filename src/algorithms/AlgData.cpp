@@ -1,30 +1,58 @@
 #include "AlgData.h"
 
-AlgData::AlgData(int Value, sf::Vector2f Position)
-    : m_Value(Value), m_Position(Position)
+AlgData::AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Font& font)
+    : m_Value(value), m_Position(position)
 {
     m_EmptyTexCoords = sf::IntRect(0, 128, 64, 64);
     m_FilledTexCoords = sf::IntRect(64, 128, 64, 64);
     m_SuccessfullCoords = sf::IntRect(128, 128, 64, 64);
+
+    m_State = State::EMPTY;
+
+    m_Sprite.setTexture(texture);
+    m_Sprite.setPosition(position);
+
+    m_Text.setFont(font);
+    m_Text.setPosition(position);
+    m_Text.setString(std::to_string(value));
+
 };
 
-sf::IntRect AlgData::GetTexCoords() const
+sf::Sprite AlgData::GetSprite()
 {
     switch (m_State)
     {
     case EMPTY:
-        return m_EmptyTexCoords;
+        m_Sprite.setTextureRect(m_EmptyTexCoords);
+        break;
 
     case SEARCHING:
-        return m_FilledTexCoords;
+        m_Sprite.setTextureRect(m_FilledTexCoords);
+        break;
 
     case FOUND:
-        return m_SuccessfullCoords;
+        m_Sprite.setTextureRect(m_SuccessfullCoords);
+        break;
     }
+    return m_Sprite;
 }
+
+sf::Text AlgData::GetText() const
+{
+    return m_Text;
+}
+
 sf::Vector2f AlgData::GetPosition() const
 {
     return m_Position;
+}
+
+sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
+{
+    sf::Vector2f oldPosition = m_Position;
+    m_Position = position;
+    m_Sprite.setPosition(position);
+    return oldPosition;
 }
 
 int AlgData::GetValue() const

@@ -1,18 +1,16 @@
 #pragma once
 
+#include "Algorithm.h"
 #include "AlgData.h"
-class BinarySearch 
+class BinarySearch : public Algorithm
 {
 public:
 
-	BinarySearch(sf::RenderWindow& window, sf::Sprite& sprite, std::vector<AlgData>& data);
+	BinarySearch(std::vector<AlgData>& data, sf::RenderWindow& window);
 
-	void OnRun(int value);
+	void OnRun(int value, sf::Time waitTime) override;
 
 private:
-	class sf::RenderWindow* m_Window;
-	class sf::Sprite* m_Sprite;
-
 	std::vector<AlgData>& m_Data;
 };
 
