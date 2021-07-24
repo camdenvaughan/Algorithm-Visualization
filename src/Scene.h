@@ -6,7 +6,7 @@
 
 enum class SceneState
 {
-	DEFAULT, MENU, BINARY, SIMPLE
+	DEFAULT, CLOSE, MENU, BINARY, SIMPLE
 };
 
 class Scene : public sf::Drawable

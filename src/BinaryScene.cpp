@@ -42,17 +42,14 @@ void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 
 SceneState BinaryScene::PollEvents(sf::Event& event)
 {
-    //while (m_Window->pollEvent(event))
-    //{
-    //    if (event.type == sf::Event::Closed)
-    //        m_Window->close();
-    //    if (event.type == sf::Event::KeyReleased)
-    //    {
-    //        // keyboard input
-    //        if (event.key.code == sf::Keyboard::Space)
-    //            return SceneState::MENU;
-    //    }
+    if (event.type == sf::Event::Closed)
+        return SceneState::CLOSE;
+    if (event.type == sf::Event::KeyReleased)
+    {
+             //keyboard input
+        if (event.key.code == sf::Keyboard::Space)
+            return SceneState::MENU;
+    }
 
-    //}
     return SceneState::DEFAULT;
 }

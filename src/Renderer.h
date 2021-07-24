@@ -9,17 +9,21 @@ class Renderer
 {
 private:
 
-	sf::Font m_Font;
+	sf::Texture* m_TextureAtlas;
+	sf::Font* m_Font;
+
 public:
 	static Renderer* GetInstance();
-	~Renderer();
 
+	sf::Texture* LoadTexture(const char* path);
+	sf::Font* LoadFont(const char* path);
 
-	sf::Font& GetFont() { return m_Font;  }
+	inline sf::Texture* GetTexture() { return m_TextureAtlas; }
+	inline sf::Font* GetFont() { return m_Font;  }
 
 private:
 
-	Renderer();
+	Renderer() {};
 	Renderer(const Renderer&) = delete;
 	Renderer& operator=(const Renderer&) = delete;
 };

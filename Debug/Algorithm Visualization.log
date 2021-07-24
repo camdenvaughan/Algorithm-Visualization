@@ -1,2 +1,6 @@
 ﻿  Application.cpp
+  BinaryScene.cpp
+  MenuScene.cpp
+  Scene.cpp
+  Generating Code...
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe
