@@ -3,7 +3,7 @@
 class QuickSort : public Algorithm
 {
 public:
-	QuickSort(std::vector<AlgData>& data, sf::RenderWindow& window);
+	QuickSort(std::vector<AlgData>& data);
 
 	void OnRun(int value, sf::Time waitTime) override;
 

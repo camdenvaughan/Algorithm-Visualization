@@ -23,7 +23,7 @@ private:
 public:
     AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Font& font);
 
-    void Draw(sf::RenderWindow& window);
+    void Draw();
 
     sf::Vector2f UpdatePositon(sf::Vector2f& position);
 

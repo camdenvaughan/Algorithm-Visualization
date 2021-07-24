@@ -3,10 +3,9 @@
 #include <iostream>
 
 
-SimpleSearch::SimpleSearch(std::vector<AlgData>& data, sf::RenderWindow& window)
+SimpleSearch::SimpleSearch(std::vector<AlgData>& data)
 	: m_Data(data)
 {
-	m_Window = &window;
 }
 
 void SimpleSearch::OnRun(int value, sf::Time waitTime)
@@ -25,7 +24,7 @@ void SimpleSearch::OnRun(int value, sf::Time waitTime)
 			++i;
 		}
 
-		Renderer::DrawVector(*m_Window, m_Data);
+		//Renderer::GetInstance()->DrawVector(m_Data);
 
 		Helpers::Wait(waitTime);
 	}

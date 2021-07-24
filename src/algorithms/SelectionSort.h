@@ -4,7 +4,7 @@
 class SelectionSort : public Algorithm
 {
 public:
-	SelectionSort(std::vector<AlgData>& data, sf::RenderWindow& window);
+	SelectionSort(std::vector<AlgData>& data);
 
 	void OnRun(int value, sf::Time waitTime) override;
 

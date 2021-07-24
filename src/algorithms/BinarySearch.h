@@ -6,7 +6,7 @@ class BinarySearch : public Algorithm
 {
 public:
 
-	BinarySearch(std::vector<AlgData>& data, sf::RenderWindow& window);
+	BinarySearch(std::vector<AlgData>& data);
 
 	void OnRun(int value, sf::Time waitTime) override;
 

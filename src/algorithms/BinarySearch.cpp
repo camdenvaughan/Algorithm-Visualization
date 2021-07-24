@@ -3,10 +3,9 @@
 
 #include <iostream>
 
-BinarySearch::BinarySearch(std::vector<AlgData>& data, sf::RenderWindow& window)
+BinarySearch::BinarySearch(std::vector<AlgData>& data)
     : m_Data(data)
 {
-    m_Window = &window;
 }
 void BinarySearch::OnRun(int value, sf::Time waitTime)
 {
@@ -23,7 +22,7 @@ void BinarySearch::OnRun(int value, sf::Time waitTime)
 
         m_Data[mid].SetSearchState(State::SEARCHING);
 
-        Renderer::DrawVector(*m_Window, m_Data);
+        //Renderer::GetInstance()->DrawVector(m_Data);
 
         if (m_Data[mid].GetValue() > value)
         {

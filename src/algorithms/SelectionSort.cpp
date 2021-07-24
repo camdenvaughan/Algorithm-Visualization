@@ -1,9 +1,8 @@
 #include "SelectionSort.h"
 
-SelectionSort::SelectionSort(std::vector<AlgData>& data, sf::RenderWindow& window)
+SelectionSort::SelectionSort(std::vector<AlgData>& data)
 	: m_Data(data)
 {
-	m_Window = &window;
 }
 
 void SelectionSort::OnRun(int value, sf::Time waitTime)
@@ -29,29 +28,28 @@ void SelectionSort::OnRun(int value, sf::Time waitTime)
 		sortedData[i].UpdatePositon(newVectorPosition);
 
 		// Update possition for the next entry to vector
-		newVectorPosition.x += 64.f;
-		if (newVectorPosition.x > m_Window->getSize().x - 65)
-		{
-			newVectorPosition.x = 0.0f;
-			newVectorPosition.y += 65.0f;
-		}
+		//newVectorPosition.x += 64.f;
+		//if (newVectorPosition.x > Renderer::GetInstance()->GetWindow()->getSize().x - 65)
+		//{
+		//	newVectorPosition.x = 0.0f;
+		//	newVectorPosition.y += 65.0f;
+		//}
 
-		// Render both vectors
-		m_Window->clear();
-		Renderer::DrawVector(*m_Window, m_Data, false);
-		Renderer::DrawVector(*m_Window, sortedData, false);
-		m_Window->display();
+		//// Render both vectors
+		//Renderer::GetInstance()->GetWindow()->clear();
+		//Renderer::GetInstance()->DrawVector(m_Data, false);
+		//Renderer::GetInstance()->DrawVector(sortedData, false);
+		//Renderer::GetInstance()->GetWindow()->display();
 
-		Helpers::Wait(waitTime);
+		//Helpers::Wait(waitTime);
 
-		m_Data.erase(m_Data.begin() + smallestIndex);
+		//m_Data.erase(m_Data.begin() + smallestIndex);
 
-		// Render old vector
-		m_Window->clear();
-		Renderer::DrawVector(*m_Window, m_Data, false);
-		Renderer::DrawVector(*m_Window, sortedData, false);
-		m_Window->display();
-
+		//// Render old vector
+		//Renderer::GetInstance()->GetWindow()->clear();
+		//Renderer::GetInstance()->DrawVector(m_Data, false);
+		//Renderer::GetInstance()->DrawVector(sortedData, false);
+		//Renderer::GetInstance()->GetWindow()->display();
 	}
 	m_Data = sortedData;
 	

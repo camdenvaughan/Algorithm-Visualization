@@ -6,7 +6,7 @@ class SimpleSearch : public Algorithm
 {
 public:
 
-	SimpleSearch(std::vector<AlgData>& data, sf::RenderWindow& window);
+	SimpleSearch(std::vector<AlgData>& data);
 
 	void OnRun(int value, sf::Time waitTime) override;
 

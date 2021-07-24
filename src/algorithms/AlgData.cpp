@@ -1,4 +1,5 @@
 #include "AlgData.h"
+#include "..\Renderer.h"
 
 AlgData::AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Font& font)
     : m_Value(value), m_Position(position)
@@ -19,7 +20,7 @@ AlgData::AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Fon
 
 };
 
-void AlgData::Draw(sf::RenderWindow& window)
+void AlgData::Draw()
 {
     switch (m_State)
     {
@@ -36,8 +37,8 @@ void AlgData::Draw(sf::RenderWindow& window)
         break;
     }
     m_Text.setString(std::to_string(m_Value));
-    window.draw(m_Sprite);
-    window.draw(m_Text);
+    //Renderer::GetInstance()->GetWindow()->draw(m_Sprite);
+    //Renderer::GetInstance()->GetWindow()->draw(m_Text);
 }
 
 sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
