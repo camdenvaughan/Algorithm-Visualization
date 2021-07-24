@@ -1,27 +1,29 @@
 #include "Renderer.h"
 
 Renderer::Renderer()
+	: m_TextureAtlas(sf::Texture()), m_Font(sf::Font())
 {
 	
 }
-Renderer* Renderer::GetInstance()
+Renderer& Renderer::GetInstance()
 {
-	static Renderer* instance;
+	static Renderer instance;
+	
 	return instance;
 }
 
-sf::Texture* Renderer::LoadTexture(const char* path)
+sf::Texture& Renderer::LoadTexture(const char* path)
 {
-	if (!m_TextureAtlas->loadFromFile(path))
+	if (!m_TextureAtlas.loadFromFile(path))
 	{
 		std::cout << "Texture failed to load" << std::endl;
 	}
 	return m_TextureAtlas;
 }
 
-sf::Font* Renderer::LoadFont(const char* path)
+sf::Font& Renderer::LoadFont(const char* path)
 {
-	if (!m_Font->loadFromFile(path))
+	if (!m_Font.loadFromFile(path))
 	{
 		std::cout << "Font failed to load" << std::endl;
 	}

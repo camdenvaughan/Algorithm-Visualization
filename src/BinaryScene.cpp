@@ -40,7 +40,7 @@ void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
     target.draw(shape);
 }
 
-SceneState BinaryScene::PollEvents(sf::Event& event)
+SceneState BinaryScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
 {
     if (event.type == sf::Event::Closed)
         return SceneState::CLOSE;

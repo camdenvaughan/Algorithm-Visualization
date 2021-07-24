@@ -14,8 +14,8 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Algorithms", sf::Style::Default);
 
-    Renderer::GetInstance()->LoadTexture("res/textures/textures.png");
-    Renderer::GetInstance()->LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
+    Renderer::GetInstance().LoadTexture("res/textures/textures.png");
+    Renderer::GetInstance().LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
 
     Scene* activeScene;
     MenuScene* menuScene = new MenuScene();
@@ -27,7 +27,7 @@ int main()
         sf::Event event;
         while (window.pollEvent(event))
         {
-            switch (activeScene->PollEvents(event))
+            switch (activeScene->PollEvents(event, sf::Mouse::getPosition(window)))
             {
             case SceneState::CLOSE:
                 window.close();

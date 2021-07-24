@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Renderer.h"
+#include "Button.h"
 
 enum class SceneState
 {
@@ -19,6 +20,6 @@ public:
 	virtual void OnUpdate(float deltaTime) {}
 	virtual void Draw();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const {}
-	virtual SceneState PollEvents(sf::Event& event) { return SceneState::DEFAULT; }
+	virtual SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) { return SceneState::DEFAULT; }
 };
 

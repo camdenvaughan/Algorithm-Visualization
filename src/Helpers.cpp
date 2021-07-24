@@ -7,6 +7,13 @@ void Helpers::Wait(sf::Time time)
     while (clock.getElapsedTime() < t1);
 }
 
+sf::Vector2f Helpers::GetCenterObjectOnBackgroundPosition(sf::Vector2f backgroundPosition, sf::FloatRect backgroundObjectBounds, sf::FloatRect foregroundObjectBounds)
+{
+    float xPos = (backgroundPosition.x + backgroundObjectBounds.width / 2) - (foregroundObjectBounds.width / 2);
+    float yPos = (backgroundPosition.y + backgroundObjectBounds.height / 2) - (foregroundObjectBounds.height / 1.5);
+    return sf::Vector2f(xPos, yPos);
+}
+
 void Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startingPos, bool shouldWrap, const unsigned int windowHeight, const unsigned int windowWidth)
 {
     sf::Vector2f position = startingPos;

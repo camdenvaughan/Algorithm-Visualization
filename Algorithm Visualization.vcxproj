@@ -153,6 +153,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\BinaryScene.cpp" />
     <ClCompile Include="src\MenuScene.cpp" />
     <ClCompile Include="src\Scene.cpp" />
@@ -166,6 +167,7 @@
     <ClCompile Include="src\Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\BinaryScene.h" />
     <ClInclude Include="src\MenuScene.h" />
     <ClInclude Include="src\Scene.h" />
