@@ -6,7 +6,7 @@
 class BinaryScene : Scene
 {
 public:
-	BinaryScene();
+	BinaryScene(unsigned int windowWidth, unsigned int windowHeight);
 	~BinaryScene();
 	void OnUpdate(float deltaTime) override;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
@@ -19,5 +19,8 @@ private:
 
 	BinarySearch m_Search;
 	SearchBounds m_SearchBounds;
+
+	std::vector<Button> m_Buttons;
+	std::vector<sf::Text> m_TextDisplay;
 };
 

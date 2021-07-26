@@ -19,7 +19,7 @@ int main()
 
     Scene* activeScene;
     MenuScene* menuScene = new MenuScene(windowWidth, windowHeight);
-    BinaryScene* binaryScene = new BinaryScene();
+    BinaryScene* binaryScene = nullptr;
     activeScene = (Scene*)menuScene;
 
     while (window.isOpen())
@@ -38,6 +38,7 @@ int main()
                 activeScene = (Scene*)menuScene;
                 break;
             case SceneState::BINARY:
+                binaryScene = new BinaryScene(windowWidth, windowHeight);
                 activeScene = (Scene*)binaryScene;
                 break;
             }

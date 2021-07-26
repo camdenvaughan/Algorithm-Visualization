@@ -27,9 +27,10 @@ public:
 
 	bool MouseIsOver(sf::Vector2i mousePos);
 
-	SceneState GetSceneState();
+	SceneState GetSceneState() const;
 
 public:
+	const std::string name;
 	bool hasBeenClicked = false;
 
 private:

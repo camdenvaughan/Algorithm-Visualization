@@ -62,7 +62,3 @@ SearchBounds& BinarySearch::RunSearchPass(int value, SearchBounds& bounds)
     }
     return bounds;
 }
-
-SearchBounds::SearchBounds(int low, int high)
-    : low(low), high(high)
-{}
