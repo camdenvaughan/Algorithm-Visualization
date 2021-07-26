@@ -156,7 +156,6 @@
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\BinaryScene.cpp" />
     <ClCompile Include="src\MenuScene.cpp" />
-    <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\algorithms\QuickSort.cpp" />
     <ClCompile Include="src\algorithms\SelectionSort.cpp" />
     <ClCompile Include="src\algorithms\SimpleSearch.cpp" />

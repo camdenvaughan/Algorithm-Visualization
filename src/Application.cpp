@@ -14,11 +14,11 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Algorithms", sf::Style::Default);
 
-    Renderer::GetInstance().LoadTexture("res/textures/textures.png");
-    Renderer::GetInstance().LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
+    Renderer::LoadTexture("res/textures/textures.png");
+    Renderer::LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
 
     Scene* activeScene;
-    MenuScene* menuScene = new MenuScene();
+    MenuScene* menuScene = new MenuScene(windowWidth, windowHeight);
     BinaryScene* binaryScene = new BinaryScene();
     activeScene = (Scene*)menuScene;
 

@@ -5,13 +5,16 @@ class MenuScene : public Scene
 {
 	
 public:
-	MenuScene();
+	MenuScene(unsigned int windowWidth, unsigned int windowHeight);
 	~MenuScene();
 
-	void Draw() override;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 	SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) override;
 private:
-	Button m_BinarySearchButton;
+	unsigned int m_WindowWidth;
+	unsigned int m_WindowHeight;
+
+	std::vector<Button> m_Buttons;
+	std::vector<sf::Text> m_TextDisplay;
 };
 

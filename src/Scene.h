@@ -7,7 +7,7 @@
 
 enum class SceneState
 {
-	DEFAULT, CLOSE, MENU, BINARY, SIMPLE
+	DEFAULT, CLOSE, MENU, BINARY, SIMPLE, SELECTION, QUICK
 };
 
 class Scene : public sf::Drawable
@@ -18,7 +18,6 @@ public:
 	virtual ~Scene() {};
 
 	virtual void OnUpdate(float deltaTime) {}
-	virtual void Draw();
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const {}
 	virtual SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) { return SceneState::DEFAULT; }
 };

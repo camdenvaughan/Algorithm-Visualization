@@ -15,13 +15,18 @@ private:
 public:
 	static Renderer& GetInstance();
 
-	sf::Texture& LoadTexture(const char* path);
-	sf::Font& LoadFont(const char* path);
+	static inline sf::Texture& LoadTexture(const char* path) { return GetInstance().LoadTextureImpl(path); }
+	static inline sf::Font& LoadFont(const char* path) { return GetInstance().LoadFontImpl(path); }
 
-	inline sf::Texture& GetTexture() { return m_TextureAtlas; }
-	inline sf::Font& GetFont() { return m_Font;  }
+	static inline sf::Texture& GetTexture() { return GetInstance().GetTextureImpl(); }
+	static inline sf::Font& GetFont() { return GetInstance().GetFontImpl(); }
 
 private:
+
+	sf::Texture& LoadTextureImpl(const char* path);
+	sf::Font& LoadFontImpl(const char* path);
+	inline sf::Texture& GetTextureImpl() { return m_TextureAtlas; }
+	inline sf::Font& GetFontImpl() { return m_Font;  }
 
 	Renderer();
 	Renderer(const Renderer&) = delete;

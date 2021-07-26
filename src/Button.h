@@ -2,10 +2,15 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+
+
+enum class SceneState;
+
 class Button : public sf::Drawable
 {
 public:
-	Button(std::string text, unsigned int fontSize, sf::IntRect defaultTextureCoords = sf::IntRect(0, 0, 192, 64), sf::IntRect clickTextureCoords = sf::IntRect(0, 64, 192, 64), sf::IntRect hoverTextureCoords = sf::IntRect(192, 0, 192, 64), sf::Color textColor = sf::Color::White);
+	Button(std::string text, SceneState sceneState, unsigned int fontSize = 25, sf::IntRect defaultTextureCoords = sf::IntRect(0, 0, 192, 64), sf::IntRect clickTextureCoords = sf::IntRect(0, 64, 192, 64), sf::IntRect hoverTextureCoords = sf::IntRect(192, 0, 192, 64), sf::Color textColor = sf::Color::White);
+	
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 
 	void ClickButton();
@@ -21,9 +26,14 @@ public:
 	void SetPosition(sf::Vector2f position);
 
 	bool MouseIsOver(sf::Vector2i mousePos);
+
+	SceneState GetSceneState();
+
 public:
 	bool hasBeenClicked = false;
+
 private:
+	SceneState m_SceneState;
 
 	sf::IntRect m_DefaultTexCoord;
 	sf::IntRect m_ClickTexCoord;

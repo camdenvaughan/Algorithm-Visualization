@@ -8,7 +8,6 @@ public:
 	BinaryScene();
 	~BinaryScene();
 
-	void Draw() override;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 	SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) override;
 

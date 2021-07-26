@@ -2,13 +2,13 @@
 #include "Helpers.h"
 #include "Renderer.h"
 
-Button::Button(std::string text, unsigned int fontSize, sf::IntRect defaultTextureCoords, sf::IntRect clickTextureCoords, sf::IntRect hoverTextureCoords, sf::Color textColor)
-	: m_DefaultTexCoord(defaultTextureCoords), m_ClickTexCoord(clickTextureCoords), m_HoverTexCoord(hoverTextureCoords)
+Button::Button(std::string text, SceneState sceneState, unsigned int fontSize, sf::IntRect defaultTextureCoords, sf::IntRect clickTextureCoords, sf::IntRect hoverTextureCoords, sf::Color textColor)
+	: m_SceneState(sceneState), m_DefaultTexCoord(defaultTextureCoords), m_ClickTexCoord(clickTextureCoords), m_HoverTexCoord(hoverTextureCoords)
 {
-	m_Sprite.setTexture(Renderer::GetInstance().GetTexture());
+	m_Sprite.setTexture(Renderer::GetTexture());
 	m_Sprite.setTextureRect(defaultTextureCoords);
 
-	m_Text.setFont(Renderer::GetInstance().GetFont());
+	m_Text.setFont(Renderer::GetFont());
 	m_Text.setFillColor(textColor);
 	m_Text.setCharacterSize(fontSize);
 	m_Text.setString(text);
@@ -71,4 +71,9 @@ bool Button::MouseIsOver(sf::Vector2i mousePos)
 	}
 	m_Sprite.setTextureRect(m_DefaultTexCoord);
 	return false;
+}
+
+SceneState Button::GetSceneState()
+{
+	return m_SceneState;
 }

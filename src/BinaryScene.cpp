@@ -25,14 +25,6 @@ BinaryScene::~BinaryScene()
 
 }
 
-void BinaryScene::Draw()
-{
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Red);
-
-
-}
-
 void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
     sf::CircleShape shape(100.f);
