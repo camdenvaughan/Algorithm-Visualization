@@ -1,6 +1,5 @@
 #include "BinarySearch.h"
 
-
 #include <iostream>
 
 BinarySearch::BinarySearch(std::vector<AlgData>& data)
@@ -36,4 +35,34 @@ void BinarySearch::OnRun(int value, sf::Time waitTime)
         Helpers::Wait(waitTime);
     }
     std::cout << "Could not find" << std::endl;
+
+
 }
+
+SearchBounds& BinarySearch::RunSearchPass(int value, SearchBounds& bounds)
+{
+    int mid = (bounds.low + bounds.high) / 2;
+    if (m_Data[mid].GetValue() == value)
+    {
+        m_Data[mid].SetSearchState(State::FOUND);
+        bounds.found = true;
+        return bounds;
+    }
+
+    m_Data[mid].SetSearchState(State::SEARCHING);
+
+
+    if (m_Data[mid].GetValue() > value)
+    {
+        bounds.high = mid - 1;
+    }
+    else
+    {
+        bounds.low = mid + 1;
+    }
+    return bounds;
+}
+
+SearchBounds::SearchBounds(int low, int high)
+    : low(low), high(high)
+{}

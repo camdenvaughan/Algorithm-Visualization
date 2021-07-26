@@ -1,23 +1,18 @@
 #include "BinaryScene.h"
 #include "Helpers.h"
 
+
 BinaryScene::BinaryScene()
+    : m_Search(BinarySearch(m_Data))
 {
-    //std::vector<AlgData> data;
-    //int vectorSize = 30;
-    //data.reserve(vectorSize);
+    m_Data.reserve(100);
 
-    //std::vector<int> valueVector;
-    //for (int i = 0; i < vectorSize; i++)
-    //{
-    //    valueVector.push_back(i);
-    //}
+    for (int i = 0; i < m_Data.capacity(); i++)
+        m_Data.emplace_back(i, sf::Vector2f(0.0f, 10.f));
+    Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 10.f));
 
-    //// std::random_shuffle(valueVector.begin(), valueVector.end());
-
-    ////for (int i = 0; i < 30; i++)
-    //    //data.emplace_back(valueVector[i], sf::Vector2f(0.0f, 10.f), texture, font);
-    //Helpers::OrganizePositions(data, sf::Vector2f(0.0f, 10.f));
+    m_SearchBounds.low = 0;
+    m_SearchBounds.high = m_Data.size();
 }
 
 BinaryScene::~BinaryScene()
@@ -25,11 +20,17 @@ BinaryScene::~BinaryScene()
 
 }
 
+void BinaryScene::OnUpdate(float deltaTime)
+{
+    if (isSearching)
+        m_Search.RunSearchPass(10, m_SearchBounds);
+    Helpers::Wait(sf::seconds(.5));
+}
+
 void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Red);
-    target.draw(shape);
+    for (const AlgData& item : m_Data)
+        target.draw(item);
 }
 
 SceneState BinaryScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
@@ -39,8 +40,10 @@ SceneState BinaryScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
     if (event.type == sf::Event::KeyReleased)
     {
              //keyboard input
+        if (event.key.code == sf::Keyboard::M)
+            return SceneState::MENU;        
         if (event.key.code == sf::Keyboard::Space)
-            return SceneState::MENU;
+            isSearching = true;
     }
 
     return SceneState::DEFAULT;

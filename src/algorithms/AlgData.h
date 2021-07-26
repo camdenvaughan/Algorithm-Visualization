@@ -1,12 +1,12 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
-enum State
+enum class State
 {
     EMPTY, SEARCHING, FOUND
 };
 
-class AlgData
+class AlgData : public sf::Drawable
 {
 private:
     int m_Value;
@@ -21,9 +21,9 @@ private:
 
     State m_State;
 public:
-    AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Font& font);
+    AlgData(int value, sf::Vector2f position);
 
-    void Draw();
+    void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 
     sf::Vector2f UpdatePositon(sf::Vector2f& position);
 

@@ -1,16 +1,3 @@
-﻿  Button.cpp
-  BinaryScene.cpp
-  MenuScene.cpp
-E:\C++ Projects\Algorithm-Visualization\src\MenuScene.cpp(14,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-E:\C++ Projects\Algorithm-Visualization\src\MenuScene.cpp(19,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Application.cpp
-  Generating Code...
+﻿  AlgData.cpp
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\AlgData.cpp(18,29): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

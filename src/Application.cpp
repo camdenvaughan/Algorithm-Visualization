@@ -42,7 +42,7 @@ int main()
                 break;
             }
         }
-
+        activeScene->OnUpdate(1);
         window.clear();
         window.draw(*activeScene);
         window.display();

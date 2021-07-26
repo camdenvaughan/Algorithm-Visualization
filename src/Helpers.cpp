@@ -14,18 +14,19 @@ sf::Vector2f Helpers::GetCenterObjectOnBackgroundPosition(sf::Vector2f backgroun
     return sf::Vector2f(xPos, yPos);
 }
 
-void Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startingPos, bool shouldWrap, const unsigned int windowHeight, const unsigned int windowWidth)
+void Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startingPos, float xIncrement, float yIncrement, bool shouldWrap, float wrapYIncrement, const unsigned int windowHeight, const unsigned int windowWidth)
 {
     sf::Vector2f position = startingPos;
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < data.size(); i++)
     {
         data[i].UpdatePositon(position);
-        position.x += 65;
+        position.x += xIncrement;
+        position.y += yIncrement;
         if (shouldWrap)
-            if (position.x > windowWidth - 65)
+            if (position.x > windowWidth - xIncrement + 1)
             {
                 position.x = 0.0f;
-                position.y += 65.0f;
+                position.y += wrapYIncrement;
             }
     }
 }

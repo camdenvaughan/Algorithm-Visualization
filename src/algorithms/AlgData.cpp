@@ -1,44 +1,32 @@
 #include "AlgData.h"
 #include "..\Renderer.h"
+#include "..\Helpers.h"
 
-AlgData::AlgData(int value, sf::Vector2f position, sf::Texture& texture, sf::Font& font)
+AlgData::AlgData(int value, sf::Vector2f position)
     : m_Value(value), m_Position(position)
 {
-    m_EmptyTexCoords = sf::IntRect(0, 128, 64, 64);
-    m_FilledTexCoords = sf::IntRect(64, 128, 64, 64);
-    m_SuccessfullCoords = sf::IntRect(128, 128, 64, 64);
+    m_EmptyTexCoords = sf::IntRect(0, 128, 32, 32);
+    m_FilledTexCoords = sf::IntRect(32, 160, 32, 32);
+    m_SuccessfullCoords = sf::IntRect(0, 160, 32, 32);
 
-    m_State = State::EMPTY;
 
-    m_Sprite.setTexture(texture);
+    m_Sprite.setTexture(Renderer::GetTexture());
+    SetSearchState(State::EMPTY);
     m_Sprite.setPosition(position);
 
-    m_Text.setFont(font);
-    m_Text.setFillColor(sf::Color::Black);
-    m_Text.setPosition(position);
+    m_Text.setFont(Renderer::GetFont());
+    m_Text.setCharacterSize(15.0f);
+    m_Text.setFillColor(sf::Color::White);
     m_Text.setString(std::to_string(value));
+    m_Text.setOrigin(sf::Vector2f(m_Text.getLocalBounds().width / 2, m_Text.getLocalBounds().height / 2));
+    m_Text.setPosition(Helpers::GetCenterObjectOnBackgroundPosition(position, m_Sprite.getGlobalBounds(), m_Text.getLocalBounds()));
 
 };
 
-void AlgData::Draw()
+void AlgData::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
-    switch (m_State)
-    {
-    case EMPTY:
-        m_Sprite.setTextureRect(m_EmptyTexCoords);
-        break;
-
-    case SEARCHING:
-        m_Sprite.setTextureRect(m_FilledTexCoords);
-        break;
-
-    case FOUND:
-        m_Sprite.setTextureRect(m_SuccessfullCoords);
-        break;
-    }
-    m_Text.setString(std::to_string(m_Value));
-    //Renderer::GetInstance()->GetWindow()->draw(m_Sprite);
-    //Renderer::GetInstance()->GetWindow()->draw(m_Text);
+    target.draw(m_Sprite);
+    target.draw(m_Text);
 }
 
 sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
@@ -46,7 +34,7 @@ sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
     sf::Vector2f oldPosition = m_Position;
     m_Position = position;
     m_Sprite.setPosition(position);
-    m_Text.setPosition(position);
+    m_Text.setPosition(Helpers::GetCenterObjectOnBackgroundPosition(position, m_Sprite.getGlobalBounds(), m_Text.getLocalBounds()));
     return oldPosition;
 }
 
@@ -63,10 +51,25 @@ int AlgData::SetValue(int value)
 {
     int oldValue = m_Value;
     m_Value = value;
+    m_Text.setString(std::to_string(m_Value));
     return oldValue;
 }
 
 void AlgData::SetSearchState(State state)
 {
     m_State = state;
+    switch (m_State)
+    {
+    case State::EMPTY:
+        m_Sprite.setTextureRect(m_EmptyTexCoords);
+        break;
+
+    case State::SEARCHING:
+        m_Sprite.setTextureRect(m_FilledTexCoords);
+        break;
+
+    case State::FOUND:
+        m_Sprite.setTextureRect(m_SuccessfullCoords);
+        break;
+    }
 }
