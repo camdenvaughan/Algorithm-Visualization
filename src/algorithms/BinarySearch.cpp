@@ -6,59 +6,27 @@ BinarySearch::BinarySearch(std::vector<AlgData>& data)
     : m_Data(data)
 {
 }
-void BinarySearch::OnRun(int value, sf::Time waitTime)
+
+AlgInfo& BinarySearch::RunAlgPass(AlgInfo& info)
 {
-    int low = 0;
-    int high = m_Data.size() - 1;
-    while (low <= high)
-    {
-        int mid = (high + low) / 2;
-        if (m_Data[mid].GetValue() == value)
-        {
-            m_Data[mid].SetSearchState(State::FOUND);
-            return;
-        }
-
-        m_Data[mid].SetSearchState(State::SEARCHING);
-
-        //Renderer::GetInstance()->DrawVector(m_Data);
-
-        if (m_Data[mid].GetValue() > value)
-        {
-            high = mid - 1;
-        }
-        else
-        {
-            low = mid + 1;
-        }
-
-        Helpers::Wait(waitTime);
-    }
-    std::cout << "Could not find" << std::endl;
-
-
-}
-
-SearchBounds& BinarySearch::RunSearchPass(int value, SearchBounds& bounds)
-{
-    int mid = (bounds.low + bounds.high) / 2;
-    if (m_Data[mid].GetValue() == value)
+    int mid = (info.low + info.high) / 2;
+    if (m_Data[mid].GetValue() == info.value)
     {
         m_Data[mid].SetSearchState(State::FOUND);
-        bounds.found = true;
-        return bounds;
+        info.found = true;
+        return info;
     }
 
     m_Data[mid].SetSearchState(State::SEARCHING);
 
 
-    if (m_Data[mid].GetValue() > value)
+    if (m_Data[mid].GetValue() > info.value)
     {
-        bounds.high = mid - 1;
+        info.high = mid - 1;
     }
     else
     {
-        bounds.low = mid + 1;
+        info.low = mid + 1;
     }
-    return bounds;
+    return info;
 }

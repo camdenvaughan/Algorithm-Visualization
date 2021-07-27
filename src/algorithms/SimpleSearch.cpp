@@ -8,25 +8,18 @@ SimpleSearch::SimpleSearch(std::vector<AlgData>& data)
 {
 }
 
-void SimpleSearch::OnRun(int value, sf::Time waitTime)
+AlgInfo& SimpleSearch::RunAlgPass(AlgInfo& info)
 {
-	int i = 0;
-	while (i < m_Data.size())
+	if (m_Data[info.currentSearchLoc].GetValue() == info.value)
 	{
-		if (m_Data[i].GetValue() == value)
-		{
-			m_Data[i].SetSearchState(State::FOUND);
-			return;
-		}
-		else
-		{
-			m_Data[i].SetSearchState(State::SEARCHING);
-			++i;
-		}
-
-		//Renderer::GetInstance()->DrawVector(m_Data);
-
-		Helpers::Wait(waitTime);
+		m_Data[info.currentSearchLoc].SetSearchState(State::FOUND);
+		info.found = true;
+		return info;
 	}
-	std::cout << "Could not find" << std::endl;
+	m_Data[info.currentSearchLoc++].SetSearchState(State::SEARCHING);
+	if (info.currentSearchLoc < m_Data.size())
+		return info;
+	
+	info.isNotInContainer = true;
+	return info;
 }

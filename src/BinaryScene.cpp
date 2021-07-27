@@ -27,8 +27,9 @@ BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
         m_Data.emplace_back(i, sf::Vector2f(0.0f, 10.f));
     Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 100.f));
 
-    m_SearchBounds.low = 0;
-    m_SearchBounds.high = m_Data.size();
+    m_AlgInfo.low = 0;
+    m_AlgInfo.high = m_Data.size();
+    m_AlgInfo.value = 98;
 }
 
 BinaryScene::~BinaryScene()
@@ -41,10 +42,10 @@ void BinaryScene::OnUpdate(float deltaTime)
     
     if (isSearching)
     {
-        if (m_SearchBounds.low != 0 || m_SearchBounds.high != m_Data.size())
+        if (m_AlgInfo.low != 0 || m_AlgInfo.high != m_Data.size())
             Helpers::Wait(sf::seconds(.5));
-        m_Search.RunSearchPass(10, m_SearchBounds);
-        if (m_SearchBounds.found)
+        m_Search.RunAlgPass(m_AlgInfo);
+        if (m_AlgInfo.found)
             isSearching = false;
     }
     

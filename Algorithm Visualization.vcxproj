@@ -164,6 +164,7 @@
     <ClCompile Include="src\Helpers.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\SimpleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Button.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="src\algorithms\AlgData.h" />
     <ClInclude Include="src\Helpers.h" />
     <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\SimpleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

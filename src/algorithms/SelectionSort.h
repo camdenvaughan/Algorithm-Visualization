@@ -6,7 +6,7 @@ class SelectionSort : public Algorithm
 public:
 	SelectionSort(std::vector<AlgData>& data);
 
-	void OnRun(int value, sf::Time waitTime) override;
+	void OnRun(int value, sf::Time waitTime);
 
 private:
 	std::vector<AlgData>& m_Data;

@@ -3,6 +3,7 @@
 
 #include "Renderer.h"
 #include "BinaryScene.h"
+#include "SimpleScene.h"
 #include "MenuScene.h"
 
 int main()
@@ -17,11 +18,14 @@ int main()
     Renderer::LoadTexture("res/textures/textures.png");
     Renderer::LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
 
-    Scene* activeScene;
+    Scene* activeScene = nullptr;
     MenuScene* menuScene = new MenuScene(windowWidth, windowHeight);
-    BinaryScene* binaryScene = nullptr;
-    activeScene = (Scene*)menuScene;
+    BinaryScene* binaryScene = new BinaryScene(windowWidth, windowHeight);
+    SimpleScene* simpleScene = new SimpleScene(windowWidth, windowHeight);
+    //SelectionScene* selectionScene = new SelectionScene(windowWidth, windowHeight);
+    //QuickScene* quickScene = new QuickScene(windowWidth, windowHeight);
 
+    activeScene = menuScene;
     while (window.isOpen())
     {
         sf::Event event;
@@ -35,11 +39,14 @@ int main()
             case SceneState::DEFAULT:
                 break;
             case SceneState::MENU:
+                delete activeScene;
                 activeScene = (Scene*)menuScene;
                 break;
             case SceneState::BINARY:
-                binaryScene = new BinaryScene(windowWidth, windowHeight);
                 activeScene = (Scene*)binaryScene;
+                break;
+            case SceneState::SIMPLE:
+                activeScene = (Scene*)simpleScene;
                 break;
             }
         }
@@ -49,6 +56,7 @@ int main()
         window.display();
     }
     delete menuScene;
-    delete binaryScene;
+    //delete binaryScene;
+    //delete simpleScene;
     return 0;
 }
