@@ -11,7 +11,7 @@ SelectionScene::SelectionScene(unsigned int windowWidth, unsigned int windowHeig
     sf::Text text;
     text.setFont(Renderer::GetFont());
     text.setCharacterSize(40);
-    text.setString("Selection Search");
+    text.setString("Selection Sort");
     text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
     text.setPosition(sf::Vector2f(windowWidth / 2, 50.0f));
     m_TextDisplay.push_back(text);

@@ -163,6 +163,7 @@
     <ClCompile Include="src\algorithms\AlgData.cpp" />
     <ClCompile Include="src\Helpers.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\QuickScene.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\SelectionScene .cpp" />
     <ClCompile Include="src\SimpleScene.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\BinaryScene.h" />
     <ClInclude Include="src\MenuScene.h" />
+    <ClInclude Include="src\QuickScene.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\algorithms\QuickSort.h" />
     <ClInclude Include="src\algorithms\SelectionSort.h" />

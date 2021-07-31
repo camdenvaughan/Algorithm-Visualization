@@ -14,7 +14,7 @@ private:
 	std::vector<AlgData> m_DisplayData;
 
 private:
-	std::vector<AlgData> Sort(std::vector<AlgData>& data);
+	std::vector<AlgData> Sort(std::vector<AlgData>& data, AlgInfo& info);
 
 };
 

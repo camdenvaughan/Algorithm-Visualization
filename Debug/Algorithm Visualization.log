@@ -1,13 +1,4 @@
-﻿  SelectionScene .cpp
-E:\C++ Projects\Algorithm-Visualization\src\SelectionScene .cpp(16,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-E:\C++ Projects\Algorithm-Visualization\src\SelectionScene .cpp(20,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-E:\C++ Projects\Algorithm-Visualization\src\SelectionScene .cpp(30,23): warning C4018: '<': signed/unsigned mismatch
+﻿  QuickSort.cpp
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(48,20): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(82,20): warning C4018: '<': signed/unsigned mismatch
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

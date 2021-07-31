@@ -1,13 +1,13 @@
 #pragma once
 #include "Scene.h"
 #include "algorithms/AlgData.h"
-#include "algorithms/SelectionSort.h"
+#include "algorithms/QuickSort.h"
 
-class SelectionScene : Scene
+class QuickScene : Scene
 {
 public:
-	SelectionScene(unsigned int windowWidth, unsigned int windowHeight);
-	~SelectionScene();
+	QuickScene(unsigned int windowWidth, unsigned int windowHeight);
+	~QuickScene();
 	void OnUpdate(float deltaTime) override;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 	SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) override;
@@ -19,7 +19,7 @@ private:
 	std::vector<AlgData> m_CopyData;
 	std::vector<AlgData> m_SortedData;
 
-	SelectionSort m_Search;
+	QuickSort m_Search;
 	AlgInfo m_AlgInfo;
 
 	std::vector<Button> m_Buttons;

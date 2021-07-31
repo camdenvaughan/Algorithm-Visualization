@@ -1,17 +1,17 @@
-#include "SelectionScene.h"
+#include "QuickScene.h"
 #include "Helpers.h"
 #include <algorithm>
 #include <random>
 
 
-SelectionScene::SelectionScene(unsigned int windowWidth, unsigned int windowHeight)
-    : m_Search(SelectionSort(m_CopyData))
+QuickScene::QuickScene(unsigned int windowWidth, unsigned int windowHeight)
+    : m_Search(QuickSort(m_CopyData))
 {
     // Set Up Text and Buttons
     sf::Text text;
     text.setFont(Renderer::GetFont());
     text.setCharacterSize(40);
-    text.setString("Selection Search");
+    text.setString("Quick Sort");
     text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
     text.setPosition(sf::Vector2f(windowWidth / 2, 50.0f));
     m_TextDisplay.push_back(text);
@@ -37,29 +37,29 @@ SelectionScene::SelectionScene(unsigned int windowWidth, unsigned int windowHeig
     m_AlgInfo.maxIterations = m_Data.size();
 }
 
-SelectionScene::~SelectionScene()
+QuickScene::~QuickScene()
 {
 
 }
 
-void SelectionScene::OnUpdate(float deltaTime)
+void QuickScene::OnUpdate(float deltaTime)
 {
     if (isSearching)
     {
         m_CopyData = m_Data;
         if (m_AlgInfo.searchIterator != 0)
-            Helpers::Wait(sf::milliseconds(200));
+            Helpers::Wait(sf::milliseconds(600));
 
         m_SortedData = m_Search.RunAlgPass(m_AlgInfo);
         Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
-        m_AlgInfo.searchIterator++;
+       // m_AlgInfo.searchIterator++;
 
         if (m_AlgInfo.done)
             isSearching = false;
     }
 }
 
-void SelectionScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
+void QuickScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
     for (const AlgData& item : m_CopyData)
         target.draw(item);    
@@ -71,7 +71,7 @@ void SelectionScene::draw(sf::RenderTarget& target, sf::RenderStates state) cons
         target.draw(button);
 }
 
-SceneState SelectionScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
+SceneState QuickScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
 {
 
     if (event.type == sf::Event::KeyReleased)
@@ -117,7 +117,7 @@ SceneState SelectionScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
     {
         //keyboard input
         if (event.key.code == sf::Keyboard::Space)
-            return SceneState::SELECTION;
+            return SceneState::QUICK;
     }
 
     return SceneState::DEFAULT;

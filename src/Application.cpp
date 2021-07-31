@@ -5,6 +5,7 @@
 #include "BinaryScene.h"
 #include "SimpleScene.h"
 #include "SelectionScene.h"
+#include "QuickScene.h"
 #include "MenuScene.h"
 
 int main()
@@ -24,7 +25,7 @@ int main()
     BinaryScene* binaryScene = nullptr;
     SimpleScene* simpleScene = nullptr;
     SelectionScene* selectionScene = nullptr;
-    //QuickScene* quickScene = new QuickScene(windowWidth, windowHeight);
+    QuickScene* quickScene = nullptr;
 
     activeScene = menuScene;
     while (window.isOpen())
@@ -59,6 +60,10 @@ int main()
                 selectionScene = new SelectionScene(windowWidth, windowHeight);
                 activeScene = (Scene*)selectionScene;
                 break;
+            case SceneState::QUICK:
+                delete activeScene;
+                quickScene = new QuickScene(windowWidth, windowHeight);
+                activeScene = (Scene*)quickScene;
             }
         }
         activeScene->OnUpdate(1);
