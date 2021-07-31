@@ -1,15 +1,17 @@
-#include "BinaryScene.h"
+#include "SelectionScene.h"
 #include "Helpers.h"
+#include <algorithm>
+#include <random>
 
 
-BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
-    : m_Search(BinarySearch(m_Data))
+SelectionScene::SelectionScene(unsigned int windowWidth, unsigned int windowHeight)
+    : m_Search(SelectionSort(m_CopyData))
 {
     // Set Up Text and Buttons
     sf::Text text;
     text.setFont(Renderer::GetFont());
     text.setCharacterSize(40);
-    text.setString("Binary Search");
+    text.setString("Selection Search");
     text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
     text.setPosition(sf::Vector2f(windowWidth / 2, 50.0f));
     m_TextDisplay.push_back(text);
@@ -17,7 +19,9 @@ BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
     m_Buttons.emplace_back("Start Search", SceneState::DEFAULT);
     m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 1000.0f));
     m_Buttons.emplace_back("Back", SceneState::MENU);
-    m_Buttons.back().SetPosition(sf::Vector2f(400.0f, 1000.0f));
+    m_Buttons.back().SetPosition(sf::Vector2f(400.0f, 1000.0f));    
+    m_Buttons.emplace_back("Randomize", SceneState::DEFAULT);
+    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth - 400.0f, 1000.0f));
 
 
     // Setting up Search
@@ -25,34 +29,41 @@ BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
 
     for (int i = 0; i < m_Data.capacity(); i++)
         m_Data.emplace_back(i, sf::Vector2f(0.0f, 10.f));
+
+    std::shuffle(std::begin(m_Data), std::end(m_Data), std::default_random_engine());
     Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 100.f));
+    m_CopyData = m_Data;
 
-    m_SearchBounds.low = 0;
-    m_SearchBounds.high = m_Data.size();
+    m_AlgInfo.maxIterations = m_Data.size();
 }
 
-BinaryScene::~BinaryScene()
+SelectionScene::~SelectionScene()
 {
 
 }
 
-void BinaryScene::OnUpdate(float deltaTime)
+void SelectionScene::OnUpdate(float deltaTime)
 {
-    
     if (isSearching)
     {
-        if (m_SearchBounds.low != 0 || m_SearchBounds.high != m_Data.size())
-            Helpers::Wait(sf::seconds(.5));
-        m_Search.RunSearchPass(10, m_SearchBounds);
-        if (m_SearchBounds.found)
+        m_CopyData = m_Data;
+        if (m_AlgInfo.searchIterator != 0)
+            Helpers::Wait(sf::milliseconds(200));
+
+        m_SortedData = m_Search.RunAlgPass(m_AlgInfo);
+        Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
+        m_AlgInfo.searchIterator++;
+
+        if (m_AlgInfo.done)
             isSearching = false;
     }
-    
 }
 
-void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
+void SelectionScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
-    for (const AlgData& item : m_Data)
+    for (const AlgData& item : m_CopyData)
+        target.draw(item);    
+    for (const AlgData& item : m_SortedData)
         target.draw(item);
     for (const sf::Text& text : m_TextDisplay)
         target.draw(text);
@@ -60,7 +71,7 @@ void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
         target.draw(button);
 }
 
-SceneState BinaryScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
+SceneState SelectionScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
 {
 
     if (event.type == sf::Event::KeyReleased)
@@ -89,17 +100,24 @@ SceneState BinaryScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
                 button.hasBeenClicked = false;
                 if (button.name == "Start Search")
                     isSearching = true;
+                else if (button.name == "Randomize")
+                {
+                    std::shuffle(std::begin(m_Data), std::end(m_Data), std::default_random_engine());
+                    Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 100.f));
+                    m_CopyData = m_Data;
+
+                    m_SortedData.erase(std::begin(m_SortedData), std::end(m_SortedData));
+                }
                 return button.GetSceneState();
             }
         }
     }
 
-
     if (event.type == sf::Event::KeyReleased)
     {
         //keyboard input
         if (event.key.code == sf::Keyboard::Space)
-            return SceneState::BINARY;
+            return SceneState::SELECTION;
     }
 
     return SceneState::DEFAULT;

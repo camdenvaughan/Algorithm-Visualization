@@ -1,13 +1,13 @@
-﻿  SimpleScene.cpp
-E:\C++ Projects\Algorithm-Visualization\src\SimpleScene.cpp(14,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+﻿  SelectionScene .cpp
+E:\C++ Projects\Algorithm-Visualization\src\SelectionScene .cpp(16,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\SimpleScene.cpp(18,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\SelectionScene .cpp(20,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\SimpleScene.cpp(26,23): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\SelectionScene .cpp(30,23): warning C4018: '<': signed/unsigned mismatch
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

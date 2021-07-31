@@ -8,18 +8,18 @@ SimpleSearch::SimpleSearch(std::vector<AlgData>& data)
 {
 }
 
-AlgInfo& SimpleSearch::RunAlgPass(AlgInfo& info)
+std::vector<AlgData> SimpleSearch::RunAlgPass(AlgInfo& info)
 {
-	if (m_Data[info.currentSearchLoc].GetValue() == info.value)
+	if (m_Data[info.searchIterator].GetValue() == info.value)
 	{
-		m_Data[info.currentSearchLoc].SetSearchState(State::FOUND);
-		info.found = true;
-		return info;
+		m_Data[info.searchIterator].SetSearchState(State::FOUND);
+		info.done = true;
+		return m_Data;
 	}
-	m_Data[info.currentSearchLoc++].SetSearchState(State::SEARCHING);
-	if (info.currentSearchLoc < m_Data.size())
-		return info;
+	m_Data[info.searchIterator++].SetSearchState(State::SEARCHING);
+	if (info.searchIterator < m_Data.size())
+		return m_Data;
 	
 	info.isNotInContainer = true;
-	return info;
+	return m_Data;
 }

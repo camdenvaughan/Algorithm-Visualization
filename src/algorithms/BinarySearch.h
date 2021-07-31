@@ -9,7 +9,7 @@ public:
 
 	BinarySearch(std::vector<AlgData>& data);
 
-	AlgInfo& RunAlgPass(AlgInfo& info) override;
+	std::vector<AlgData> RunAlgPass(AlgInfo& info) override;
 
 private:
 	std::vector<AlgData>& m_Data;

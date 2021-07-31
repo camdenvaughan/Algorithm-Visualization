@@ -45,7 +45,7 @@ void BinaryScene::OnUpdate(float deltaTime)
         if (m_AlgInfo.low != 0 || m_AlgInfo.high != m_Data.size())
             Helpers::Wait(sf::seconds(.5));
         m_Search.RunAlgPass(m_AlgInfo);
-        if (m_AlgInfo.found)
+        if (m_AlgInfo.done)
             isSearching = false;
     }
     

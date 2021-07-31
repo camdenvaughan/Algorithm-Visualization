@@ -12,7 +12,7 @@ public:
 
 	SimpleSearch(std::vector<AlgData>& data);
 
-	AlgInfo& RunAlgPass(AlgInfo& info) override;
+	std::vector<AlgData> RunAlgPass(AlgInfo& info) override;
 
 
 private:

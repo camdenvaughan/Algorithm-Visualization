@@ -5,7 +5,7 @@ class QuickSort : public Algorithm
 public:
 	QuickSort(std::vector<AlgData>& data);
 
-	void OnRun(int value, sf::Time waitTime);
+	std::vector<AlgData> RunAlgPass(AlgInfo& info) override;
 
 private:
 	std::vector<AlgData>& m_Data;

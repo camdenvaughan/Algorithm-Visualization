@@ -5,7 +5,7 @@ QuickSort::QuickSort(std::vector<AlgData>& data)
 {
 }
 
-void QuickSort::OnRun(int value, sf::Time waitTime)
+std::vector<AlgData> QuickSort::RunAlgPass(AlgInfo& info)
 {
 	m_Data = Sort(m_Data);
 	sf::Vector2f position;
@@ -19,6 +19,7 @@ void QuickSort::OnRun(int value, sf::Time waitTime)
 	Helpers::Wait(sf::milliseconds(600));
 	for (AlgData& item : m_Data)
 		item.SetSearchState(State::EMPTY);
+	return std::vector<AlgData>();
 }
 
 std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data)

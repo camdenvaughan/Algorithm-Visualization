@@ -37,11 +37,11 @@ void SimpleScene::OnUpdate(float deltaTime)
     
     if (isSearching)
     {
-        if (m_AlgInfo.currentSearchLoc != 0)
+        if (m_AlgInfo.searchIterator != 0)
             Helpers::Wait(sf::milliseconds(200));
         m_Search.RunAlgPass(m_AlgInfo);
 
-        if (m_AlgInfo.found)
+        if (m_AlgInfo.done)
             isSearching = false;
         else if (m_AlgInfo.isNotInContainer)
         {

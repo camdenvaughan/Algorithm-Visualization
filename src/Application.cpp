@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "BinaryScene.h"
 #include "SimpleScene.h"
+#include "SelectionScene.h"
 #include "MenuScene.h"
 
 int main()
@@ -20,9 +21,9 @@ int main()
 
     Scene* activeScene = nullptr;
     MenuScene* menuScene = new MenuScene(windowWidth, windowHeight);
-    BinaryScene* binaryScene = new BinaryScene(windowWidth, windowHeight);
-    SimpleScene* simpleScene = new SimpleScene(windowWidth, windowHeight);
-    //SelectionScene* selectionScene = new SelectionScene(windowWidth, windowHeight);
+    BinaryScene* binaryScene = nullptr;
+    SimpleScene* simpleScene = nullptr;
+    SelectionScene* selectionScene = nullptr;
     //QuickScene* quickScene = new QuickScene(windowWidth, windowHeight);
 
     activeScene = menuScene;
@@ -40,13 +41,23 @@ int main()
                 break;
             case SceneState::MENU:
                 delete activeScene;
+                menuScene = new MenuScene(windowWidth, windowHeight);
                 activeScene = (Scene*)menuScene;
                 break;
             case SceneState::BINARY:
+                delete activeScene;
+                binaryScene = new BinaryScene(windowWidth, windowHeight);
                 activeScene = (Scene*)binaryScene;
                 break;
             case SceneState::SIMPLE:
+                delete activeScene;
+                simpleScene = new SimpleScene(windowWidth, windowHeight);
                 activeScene = (Scene*)simpleScene;
+                break;
+            case SceneState::SELECTION:
+                delete activeScene;
+                selectionScene = new SelectionScene(windowWidth, windowHeight);
+                activeScene = (Scene*)selectionScene;
                 break;
             }
         }
@@ -55,8 +66,7 @@ int main()
         window.draw(*activeScene);
         window.display();
     }
-    delete menuScene;
-    //delete binaryScene;
-    //delete simpleScene;
+    delete activeScene;
+
     return 0;
 }
