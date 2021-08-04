@@ -16,6 +16,7 @@ struct AlgInfo
 	unsigned int maxIterations = 0;
 	bool done = false;
 	bool isNotInContainer = false;
+	bool skipWait = true;
 };
 class Algorithm 
 {

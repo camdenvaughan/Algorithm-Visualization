@@ -37,8 +37,11 @@ void SimpleScene::OnUpdate(float deltaTime)
     
     if (isSearching)
     {
-        if (m_AlgInfo.searchIterator != 0)
-            Helpers::Wait(sf::milliseconds(200));
+        if (m_AlgInfo.skipWait)
+        {
+            Helpers::Wait(sf::milliseconds(600));
+            m_AlgInfo.skipWait = false;
+        }
         m_Search.RunAlgPass(m_AlgInfo);
 
         if (m_AlgInfo.done)

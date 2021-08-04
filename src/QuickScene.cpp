@@ -25,7 +25,7 @@ QuickScene::QuickScene(unsigned int windowWidth, unsigned int windowHeight)
 
 
     // Setting up Search
-    m_Data.reserve(100);
+    m_Data.reserve(50);
 
     for (int i = 0; i < m_Data.capacity(); i++)
         m_Data.emplace_back(i, sf::Vector2f(0.0f, 10.f));
@@ -47,21 +47,35 @@ void QuickScene::OnUpdate(float deltaTime)
     if (isSearching)
     {
         m_CopyData = m_Data;
-        if (m_AlgInfo.searchIterator != 0)
-            Helpers::Wait(sf::milliseconds(600));
+        if (!m_AlgInfo.skipWait)
+        {
+           // Helpers::Wait(sf::milliseconds(600));
+        }
+        m_AlgInfo.skipWait = false;
 
         m_SortedData = m_Search.RunAlgPass(m_AlgInfo);
-        Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
-       // m_AlgInfo.searchIterator++;
+        //Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
+        m_AlgInfo.searchIterator++;
 
         if (m_AlgInfo.done)
+        {
             isSearching = false;
+            for (AlgData& item : m_Data)
+            {
+                sf::Vector2f position(item.GetPositon().x, item.GetPositon().y + 70.0f);
+                item.UpdatePositon(position);
+                item.SetSearchState(State::SEARCHING);
+            }
+            for (AlgData& item : m_CopyData)
+                m_Data.push_back(item);
+
+        }
     }
 }
 
 void QuickScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
-    for (const AlgData& item : m_CopyData)
+    for (const AlgData& item : m_Data)
         target.draw(item);    
     for (const AlgData& item : m_SortedData)
         target.draw(item);

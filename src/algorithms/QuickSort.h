@@ -14,7 +14,11 @@ private:
 	std::vector<AlgData> m_DisplayData;
 
 private:
-	std::vector<AlgData> Sort(std::vector<AlgData>& data, AlgInfo& info);
+	std::vector<AlgData> Sort(std::vector<AlgData>& data, AlgInfo& info, std::vector<std::vector<AlgData>>& displayData);
+
+	std::vector<std::vector<AlgData>> SortDisplayLinesBySize(std::vector<std::vector<AlgData>> displayData);
+
+	bool IsSorted(std::vector<AlgData>& data);
 
 };
 

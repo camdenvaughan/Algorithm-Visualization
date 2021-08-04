@@ -47,8 +47,11 @@ void SelectionScene::OnUpdate(float deltaTime)
     if (isSearching)
     {
         m_CopyData = m_Data;
-        if (m_AlgInfo.searchIterator != 0)
-            Helpers::Wait(sf::milliseconds(200));
+        if (!m_AlgInfo.skipWait)
+        {
+            Helpers::Wait(sf::milliseconds(600));
+            m_AlgInfo.skipWait = false;
+        }
 
         m_SortedData = m_Search.RunAlgPass(m_AlgInfo);
         Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
