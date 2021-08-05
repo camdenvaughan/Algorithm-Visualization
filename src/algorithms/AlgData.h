@@ -25,9 +25,10 @@ public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 
-    sf::Vector2f UpdatePositon(sf::Vector2f& position);
+    sf::Vector2f UpdatePosition(sf::Vector2f position);
 
-    sf::Vector2f GetPositon() const;
+
+    sf::Vector2f GetPosition() const;
 
     int GetValue() const;
 

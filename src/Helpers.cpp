@@ -19,7 +19,7 @@ void Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startin
     sf::Vector2f position = startingPos;
     for (int i = 0; i < data.size(); i++)
     {
-        data[i].UpdatePositon(position);
+        data[i].UpdatePosition(position);
         position.x += xIncrement;
         position.y += yIncrement;
         if (shouldWrap)

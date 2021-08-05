@@ -24,8 +24,8 @@ std::vector<AlgData> QuickSort::RunAlgPass(AlgInfo& info)
 	{
 		for (AlgData item : displayData[i])
 		{
-			sf::Vector2f position(item.GetPositon().x, 300 + (32.0f * i));
-			item.UpdatePositon(position);
+			sf::Vector2f position(item.GetPosition().x, 300 + (32.0f * i));
+			item.UpdatePosition(position);
 			returnData.push_back(item);
 		}
 	}
@@ -57,7 +57,7 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, AlgInfo& info, 
 			displayLine.push_back(data[i]);
 			displayLine.back().SetSearchState(State::FOUND);
 			sf::Vector2f centerPosition = sf::Vector2f(1000.0f, 0.0f);
-			displayLine.back().UpdatePositon(centerPosition);
+			displayLine.back().UpdatePosition(centerPosition);
 			continue;
 		}
 		if (data[i].GetValue() < pivot.GetValue())
@@ -65,7 +65,7 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, AlgInfo& info, 
 			less.push_back(data[i]);
 			displayLine.push_back(data[i]);
 			displayLine.back().SetSearchState(State::SEARCHING);
-			displayLine.back().UpdatePositon(leftPosition);
+			displayLine.back().UpdatePosition(leftPosition);
 			leftPosition.x += 32.0f;
 		}
 		else
@@ -73,7 +73,7 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, AlgInfo& info, 
 			greater.push_back(data[i]);
 			displayLine.push_back(data[i]);
 			displayLine.back().SetSearchState(State::EMPTY);
-			displayLine.back().UpdatePositon(rightPosition);
+			displayLine.back().UpdatePosition(rightPosition);
 			rightPosition.x -= 32.0f;
 		}
 	}

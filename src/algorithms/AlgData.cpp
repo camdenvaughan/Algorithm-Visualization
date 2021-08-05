@@ -29,7 +29,7 @@ void AlgData::draw(sf::RenderTarget& target, sf::RenderStates state) const
     target.draw(m_Text);
 }
 
-sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
+sf::Vector2f AlgData::UpdatePosition(sf::Vector2f position)
 {
     sf::Vector2f oldPosition = m_Position;
     m_Position = position;
@@ -38,7 +38,8 @@ sf::Vector2f AlgData::UpdatePositon(sf::Vector2f& position)
     return oldPosition;
 }
 
-sf::Vector2f AlgData::GetPositon() const
+
+sf::Vector2f AlgData::GetPosition() const
 {
     return m_Position;
 }

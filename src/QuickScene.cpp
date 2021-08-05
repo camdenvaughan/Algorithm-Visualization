@@ -47,23 +47,21 @@ void QuickScene::OnUpdate(float deltaTime)
     if (isSearching)
     {
         m_CopyData = m_Data;
-        if (!m_AlgInfo.skipWait)
-        {
-           // Helpers::Wait(sf::milliseconds(600));
-        }
-        m_AlgInfo.skipWait = false;
+        
 
         m_SortedData = m_Search.RunAlgPass(m_AlgInfo);
-        //Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
         m_AlgInfo.searchIterator++;
+
+
+            m_AlgInfo.skipWait = false;
 
         if (m_AlgInfo.done)
         {
             isSearching = false;
             for (AlgData& item : m_Data)
             {
-                sf::Vector2f position(item.GetPositon().x, item.GetPositon().y + 70.0f);
-                item.UpdatePositon(position);
+                sf::Vector2f position(item.GetPosition().x, item.GetPosition().y + 70.0f);
+                item.UpdatePosition(position);
                 item.SetSearchState(State::SEARCHING);
             }
             for (AlgData& item : m_CopyData)
@@ -124,6 +122,21 @@ SceneState QuickScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
                 }
                 return button.GetSceneState();
             }
+        }
+    }
+
+    if (event.type == sf::Event::MouseWheelScrolled)
+    {
+        if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
+        {
+            for (AlgData& item : m_Data)
+                item.UpdatePosition(sf::Vector2f(item.GetPosition().x, item.GetPosition().y + (5 * event.mouseWheelScroll.delta)));
+            
+            for (AlgData& item : m_SortedData)
+                item.UpdatePosition(sf::Vector2f(item.GetPosition().x, item.GetPosition().y + (5 * event.mouseWheelScroll.delta)));
+            for (sf::Text& text : m_TextDisplay)
+                text.setPosition(sf::Vector2f(text.getPosition().x, text.getPosition().y + (5 * event.mouseWheelScroll.delta)));
+
         }
     }
 
