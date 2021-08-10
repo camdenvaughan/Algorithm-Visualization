@@ -39,22 +39,22 @@
     <ClCompile Include="src\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BinaryScene.cpp">
+    <ClCompile Include="src\scenes\BinaryScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\MenuScene.cpp">
+    <ClCompile Include="src\scenes\MenuScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SimpleScene.cpp">
+    <ClCompile Include="src\scenes\SimpleScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SelectionScene .cpp">
+    <ClCompile Include="src\scenes\SelectionScene .cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\QuickScene.cpp">
+    <ClCompile Include="src\scenes\QuickScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -83,25 +83,25 @@
     <ClInclude Include="src\algorithms\QuickSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Scene.h">
+    <ClInclude Include="src\scenes\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\MenuScene.h">
+    <ClInclude Include="src\scenes\MenuScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BinaryScene.h">
+    <ClInclude Include="src\scenes\BinaryScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleScene.h">
+    <ClInclude Include="src\scenes\SimpleScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SelectionScene.h">
+    <ClInclude Include="src\scenes\SelectionScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\QuickScene.h">
+    <ClInclude Include="src\scenes\QuickScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

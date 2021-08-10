@@ -15,7 +15,6 @@ std::vector<AlgData> SelectionSort::RunAlgPass(AlgInfo& info)
 	{
 		if (i == info.maxIterations)
 		{
-			std::cout << "done\n";
 			info.done = true;
 			return sortedData;
 		}

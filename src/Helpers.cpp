@@ -14,8 +14,9 @@ sf::Vector2f Helpers::GetCenterObjectOnBackgroundPosition(sf::Vector2f backgroun
     return sf::Vector2f(xPos, yPos);
 }
 
-void Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startingPos, float xIncrement, float yIncrement, bool shouldWrap, float wrapYIncrement, const unsigned int windowHeight, const unsigned int windowWidth)
+int Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startingPos, float xIncrement, float yIncrement, bool shouldWrap, float wrapYIncrement, const unsigned int windowHeight, const unsigned int windowWidth)
 {
+    int amountWrapped = 0;
     sf::Vector2f position = startingPos;
     for (int i = 0; i < data.size(); i++)
     {
@@ -27,6 +28,8 @@ void Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startin
             {
                 position.x = 0.0f;
                 position.y += wrapYIncrement;
+                ++amountWrapped;
             }
     }
+    return amountWrapped;
 }

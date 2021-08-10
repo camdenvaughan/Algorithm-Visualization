@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <ctime>
 
 #include "Renderer.h"
 #include "BinaryScene.h"
@@ -10,10 +9,8 @@
 
 int main()
 {
-    srand((unsigned int)time(NULL));
-
-    unsigned int windowWidth = 2000;
-    unsigned int windowHeight = 1300;
+    unsigned int windowWidth = 1000;
+    unsigned int windowHeight = 900;
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Algorithms", sf::Style::Default);
 
@@ -42,28 +39,24 @@ int main()
                 break;
             case SceneState::MENU:
                 delete activeScene;
-                menuScene = new MenuScene(windowWidth, windowHeight);
-                activeScene = (Scene*)menuScene;
+                activeScene = new MenuScene(windowWidth, windowHeight);
                 break;
             case SceneState::BINARY:
                 delete activeScene;
-                binaryScene = new BinaryScene(windowWidth, windowHeight);
-                activeScene = (Scene*)binaryScene;
+                activeScene = new BinaryScene(windowWidth, windowHeight);
                 break;
             case SceneState::SIMPLE:
                 delete activeScene;
-                simpleScene = new SimpleScene(windowWidth, windowHeight);
-                activeScene = (Scene*)simpleScene;
+                activeScene = new SimpleScene(windowWidth, windowHeight);
                 break;
             case SceneState::SELECTION:
                 delete activeScene;
-                selectionScene = new SelectionScene(windowWidth, windowHeight);
-                activeScene = (Scene*)selectionScene;
+                activeScene = new SelectionScene(windowWidth, windowHeight);
                 break;
             case SceneState::QUICK:
                 delete activeScene;
-                quickScene = new QuickScene(windowWidth, windowHeight);
-                activeScene = (Scene*)quickScene;
+                activeScene = new QuickScene(windowWidth, windowHeight);
+                break;
             }
         }
         activeScene->OnUpdate(1);
