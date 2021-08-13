@@ -4,21 +4,22 @@ E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(16,47): warnin
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(20,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(21,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(22,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(23,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(24,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(25,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(30,23): warning C4018: '<': signed/unsigned mismatch
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(34,87): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(32,23): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(36,87): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(70,27): warning C4018: '<': signed/unsigned mismatch
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

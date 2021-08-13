@@ -5,7 +5,7 @@
 #include <iostream>
 #include "algorithms/AlgData.h"
 
-class Renderer
+class Resources
 {
 private:
 
@@ -13,7 +13,7 @@ private:
 	sf::Font m_Font;
 
 public:
-	static Renderer& GetInstance();
+	static Resources& GetInstance();
 
 	static inline sf::Texture& LoadTexture(const char* path) { return GetInstance().LoadTextureImpl(path); }
 	static inline sf::Font& LoadFont(const char* path) { return GetInstance().LoadFontImpl(path); }
@@ -28,7 +28,7 @@ private:
 	inline sf::Texture& GetTextureImpl() { return m_TextureAtlas; }
 	inline sf::Font& GetFontImpl() { return m_Font;  }
 
-	Renderer();
-	Renderer(const Renderer&) = delete;
-	Renderer& operator=(const Renderer&) = delete;
+	Resources();
+	Resources(const Resources&) = delete;
+	Resources& operator=(const Resources&) = delete;
 };

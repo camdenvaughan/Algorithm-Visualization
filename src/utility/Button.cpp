@@ -1,15 +1,15 @@
 #include "Button.h"
 #include "Helpers.h"
-#include "Renderer.h"
+#include "Resources.h"
 
 Button::Button(std::string text, SceneState sceneState, unsigned int fontSize, sf::IntRect defaultTextureCoords, sf::IntRect clickTextureCoords, sf::IntRect hoverTextureCoords, sf::Color textColor)
 	: name(text), m_SceneState(sceneState), m_DefaultTexCoord(defaultTextureCoords), m_ClickTexCoord(clickTextureCoords), m_HoverTexCoord(hoverTextureCoords)
 {
-	m_Sprite.setTexture(Renderer::GetTexture());
+	m_Sprite.setTexture(Resources::GetTexture());
 	m_Sprite.setTextureRect(defaultTextureCoords);
 	m_Sprite.setOrigin(sf::Vector2f(m_Sprite.getLocalBounds().width / 2, m_Sprite.getLocalBounds().height / 2));
 
-	m_Text.setFont(Renderer::GetFont());
+	m_Text.setFont(Resources::GetFont());
 	m_Text.setFillColor(textColor);
 	m_Text.setCharacterSize(fontSize);
 	m_Text.setString(text);

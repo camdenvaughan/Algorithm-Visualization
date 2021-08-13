@@ -19,8 +19,6 @@ private:
 	bool isSearching = false;
 
 	std::vector<AlgData> m_Data;
-	std::vector<AlgData> m_CopyData;
-	std::vector<AlgData> m_SortedData;
 
 	QuickSort m_Search;
 	AlgInfo m_AlgInfo;

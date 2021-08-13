@@ -5,9 +5,9 @@
 MenuScene::MenuScene(unsigned int windowWidth, unsigned int windowHeight)
     : m_WindowWidth(windowWidth), m_WindowHeight(windowHeight)
 {
-
+    // Setup Text
     sf::Text text;
-    text.setFont(Renderer::GetFont());
+    text.setFont(Resources::GetFont());
     text.setCharacterSize(40);
     text.setString("Algorithm Visualizer");
     text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
@@ -19,6 +19,7 @@ MenuScene::MenuScene(unsigned int windowWidth, unsigned int windowHeight)
     text.setPosition(sf::Vector2f(windowWidth / 2, 100.0f));
     m_TextDisplay.push_back(text);
 
+    // Setup Buttons
     m_Buttons.emplace_back("Binary Search", SceneState::BINARY);
     m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 200.0f));
     m_Buttons.emplace_back("Simple Search", SceneState::SIMPLE);
@@ -42,9 +43,11 @@ void MenuScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 
 SceneState MenuScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
 {
+    // Check for events
     if (event.type == sf::Event::Closed)
         return SceneState::CLOSE;
 
+    // Check Button input
     for (Button& button : m_Buttons)
     {
         if (button.MouseIsOver(mousePos))
@@ -60,14 +63,6 @@ SceneState MenuScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
                 return button.GetSceneState();
             }
         }
-    }
-
-
-    if (event.type == sf::Event::KeyReleased)
-    {
-        //keyboard input
-        if (event.key.code == sf::Keyboard::Space)
-            return SceneState::BINARY;
     }
 
     return SceneState::DEFAULT;

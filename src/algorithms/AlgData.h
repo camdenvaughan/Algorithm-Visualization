@@ -1,11 +1,13 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 
+// this enum determines the color of the data
 enum class State
 {
     EMPTY, SEARCHING, FOUND
 };
 
+// A class to handle the data that is being visualized in the algortihms
 class AlgData : public sf::Drawable
 {
 private:

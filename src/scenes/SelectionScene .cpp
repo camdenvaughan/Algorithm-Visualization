@@ -9,7 +9,7 @@ SelectionScene::SelectionScene(unsigned int windowWidth, unsigned int windowHeig
 {
     // Set Up Text and Buttons
     sf::Text text;
-    text.setFont(Renderer::GetFont());
+    text.setFont(Resources::GetFont());
     text.setCharacterSize(40);
     text.setString("Selection Sort");
     text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
@@ -42,11 +42,6 @@ void SelectionScene::OnUpdate(float deltaTime)
     if (isSearching)
     {
         m_CopyData = m_Data;
-        if (!m_AlgInfo.skipWait)
-        {
-            Helpers::Wait(sf::milliseconds(600));
-            m_AlgInfo.skipWait = false;
-        }
 
         m_SortedData = m_Search.RunAlgPass(m_AlgInfo);
         Helpers::OrganizePositions(m_SortedData, sf::Vector2f(0.0f, 300.f));
@@ -56,7 +51,7 @@ void SelectionScene::OnUpdate(float deltaTime)
         {
             m_TextDisplay[0].setString("Sorted Data");
             sf::Text text;
-            text.setFont(Renderer::GetFont());
+            text.setFont(Resources::GetFont());
             text.setCharacterSize(40);
             text.setString("Old Data");
             text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));

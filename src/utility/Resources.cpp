@@ -1,6 +1,6 @@
-#include "Renderer.h"
+#include "Resources.h"
 
-sf::Texture& Renderer::LoadTextureImpl(const char* path)
+sf::Texture& Resources::LoadTextureImpl(const char* path)
 {
 	if (!m_TextureAtlas.loadFromFile(path))
 	{
@@ -9,7 +9,7 @@ sf::Texture& Renderer::LoadTextureImpl(const char* path)
 	return m_TextureAtlas;
 }
 
-sf::Font& Renderer::LoadFontImpl(const char* path)
+sf::Font& Resources::LoadFontImpl(const char* path)
 {
 	if (!m_Font.loadFromFile(path))
 	{
@@ -18,14 +18,14 @@ sf::Font& Renderer::LoadFontImpl(const char* path)
 	return m_Font;
 }
 
-Renderer::Renderer()
+Resources::Resources()
 	: m_TextureAtlas(sf::Texture()), m_Font(sf::Font())
 {
 	
 }
-Renderer& Renderer::GetInstance()
+Resources& Resources::GetInstance()
 {
-	static Renderer instance;
+	static Resources instance;
 	
 	return instance;
 }

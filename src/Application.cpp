@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include "Renderer.h"
+#include "Resources.h"
 #include "BinaryScene.h"
 #include "SimpleScene.h"
 #include "SelectionScene.h"
@@ -9,61 +9,67 @@
 
 int main()
 {
+    // Window Size
     unsigned int windowWidth = 1000;
     unsigned int windowHeight = 900;
 
+    // Create Window
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Algorithms", sf::Style::Default);
 
-    Renderer::LoadTexture("res/textures/textures.png");
-    Renderer::LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
+    // Load Texture and Font into Renderer Singleton
+    Resources::LoadTexture("res/textures/textures.png");
+    Resources::LoadFont("res/fonts/coolvetica/coolvetica rg.ttf");
 
-    Scene* activeScene = nullptr;
-    MenuScene* menuScene = new MenuScene(windowWidth, windowHeight);
-    BinaryScene* binaryScene = nullptr;
-    SimpleScene* simpleScene = nullptr;
-    SelectionScene* selectionScene = nullptr;
-    QuickScene* quickScene = nullptr;
+    // Create active scene pointer with a the menu as the current active scene
+    Scene* activeScene =  new MenuScene(windowWidth, windowHeight);
 
-    activeScene = menuScene;
+    // Main Loop
     while (window.isOpen())
     {
+        // Create SFML Event and check for Events
         sf::Event event;
         while (window.pollEvent(event))
         {
+            // Lets scenes Poll for events and check for scene changes
             switch (activeScene->PollEvents(event, sf::Mouse::getPosition(window)))
             {
-            case SceneState::CLOSE:
+            case SceneState::CLOSE: // exit
                 window.close();
                 break;
-            case SceneState::DEFAULT:
+            case SceneState::DEFAULT: // continue
                 break;
-            case SceneState::MENU:
+            case SceneState::MENU: // set menu as active
                 delete activeScene;
                 activeScene = new MenuScene(windowWidth, windowHeight);
                 break;
-            case SceneState::BINARY:
+            case SceneState::BINARY: // set Binary Search Scene as active
                 delete activeScene;
                 activeScene = new BinaryScene(windowWidth, windowHeight);
                 break;
-            case SceneState::SIMPLE:
+            case SceneState::SIMPLE: // set Simple Search Scene as active
                 delete activeScene;
                 activeScene = new SimpleScene(windowWidth, windowHeight);
                 break;
-            case SceneState::SELECTION:
+            case SceneState::SELECTION: // set Selection Sort Scene as active
                 delete activeScene;
                 activeScene = new SelectionScene(windowWidth, windowHeight);
                 break;
-            case SceneState::QUICK:
+            case SceneState::QUICK: // set Quick Sort Scene as active
                 delete activeScene;
                 activeScene = new QuickScene(windowWidth, windowHeight);
                 break;
             }
         }
+
+        // run the active scenes Update Method
         activeScene->OnUpdate(1);
-        window.clear();
+
+        // Draw to window
+        window.clear(sf::Color(110, 181, 129));
         window.draw(*activeScene);
         window.display();
     }
+
     delete activeScene;
 
     return 0;

@@ -1,6 +1,6 @@
 #include "AlgData.h"
-#include "..\Renderer.h"
-#include "..\Helpers.h"
+#include "Resources.h"
+#include "Helpers.h"
 
 AlgData::AlgData(int value, sf::Vector2f position)
     : m_Value(value), m_Position(position)
@@ -10,11 +10,11 @@ AlgData::AlgData(int value, sf::Vector2f position)
     m_SuccessfullCoords = sf::IntRect(0, 160, 32, 32);
 
 
-    m_Sprite.setTexture(Renderer::GetTexture());
+    m_Sprite.setTexture(Resources::GetTexture());
     SetSearchState(State::EMPTY);
     m_Sprite.setPosition(position);
 
-    m_Text.setFont(Renderer::GetFont());
+    m_Text.setFont(Resources::GetFont());
     m_Text.setCharacterSize(15.0f);
     m_Text.setFillColor(sf::Color::White);
     m_Text.setString(std::to_string(value));

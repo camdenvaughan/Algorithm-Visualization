@@ -24,7 +24,7 @@
     <ClCompile Include="src\algorithms\BinarySearch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Helpers.cpp">
+    <ClCompile Include="src\utility\Helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\algorithms\SimpleSearch.cpp">
@@ -36,13 +36,13 @@
     <ClCompile Include="src\algorithms\QuickSort.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renderer.cpp">
+    <ClCompile Include="src\utility\Resources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\BinaryScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Button.cpp">
+    <ClCompile Include="src\utility\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\scenes\MenuScene.cpp">
@@ -65,7 +65,7 @@
     <ClInclude Include="src\algorithms\BinarySearch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Helpers.h">
+    <ClInclude Include="src\utility\Helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\algorithms\SimpleSearch.h">
@@ -74,7 +74,7 @@
     <ClInclude Include="src\algorithms\Algorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renderer.h">
+    <ClInclude Include="src\utility\Resources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\algorithms\SelectionSort.h">
@@ -92,7 +92,7 @@
     <ClInclude Include="src\scenes\BinaryScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Button.h">
+    <ClInclude Include="src\utility\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\scenes\SimpleScene.h">

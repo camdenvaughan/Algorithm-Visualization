@@ -2,9 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-#include "Renderer.h"
+#include "Resources.h"
 #include "Button.h"
 
+// Enum handling current scene
 enum class SceneState
 {
 	DEFAULT, CLOSE, MENU, BINARY, SIMPLE, SELECTION, QUICK
