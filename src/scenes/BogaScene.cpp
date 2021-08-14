@@ -8,13 +8,15 @@ BogaScene::BogaScene(unsigned int windowWidth, unsigned int windowHeight)
     : m_Alg(BogaSort(m_Data, m_AlgInfo))
 {
     // Set Up Text
+    m_TextDisplay.reserve(5);
     m_TextDisplay.emplace_back("Boga Sort", 40U, sf::Vector2f(windowWidth / 2, 50.0f));
+    m_TextDisplay.emplace_back("Iterations: ", 20U, sf::Vector2f(windowWidth / 2, 500.0f));
+    m_IteratorText = &m_TextDisplay.emplace_back("0", 20U, sf::Vector2f(windowWidth / 2, 520.0f));
 
     // Set Up Buttons
     m_Buttons.emplace_back("Sort", sf::Vector2f(windowWidth / 2, windowHeight - 100.0f), SceneState::DEFAULT);
     m_Buttons.emplace_back("Back", sf::Vector2f(windowWidth / 4, windowHeight - 100.0f), SceneState::MENU);
     m_Buttons.emplace_back("Reset", sf::Vector2f(windowWidth - (windowWidth / 4), windowHeight - 100.0f), SceneState::BOGA);
-
 
     // Reserve space in m_Original Data
     m_OriginalData.reserve(5);
@@ -37,16 +39,29 @@ void BogaScene::OnUpdate(float deltaTime)
 {
     if (isSearching)
     {
+        // Run Algortihm and Organize positions of m_Data
         m_Alg.RunAlgPass();
         Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 300.0f));
-        m_AlgInfo.searchIterator++;
-        std::string iterationSting("iteration: ");
-        iterationSting.append(std::to_string(m_AlgInfo.searchIterator));
-        m_TextDisplay.back().SetString(iterationSting);
+
+        // Display the Iteration Count
+        m_IteratorText->SetString(std::to_string(++m_AlgInfo.searchIterator));
+
+        // Check if the algorithm has finished
         if (m_AlgInfo.done)
         {
-            // HOly CRap
-            std::cout << "done in " << m_AlgInfo.searchIterator << " steps\n";
+            // Create new titles
+            m_TextDisplay[0].SetString("Sorted Data");
+            m_TextDisplay.emplace_back("Old Data", 40U, sf::Vector2f(m_TextDisplay.back().GetPosition().x, 250.0f));
+
+            // Flip the positions of the original and the new sorted data and change color of sorted data
+            for (int i = 0; i < m_Data.size(); i++)
+            {
+                m_Data[i].SetSearchState(State::FOUND);
+                m_OriginalData[i].UpdatePosition(m_Data[i].GetPosition());
+                m_Data[i].UpdatePosition(sf::Vector2f(m_Data[i].GetPosition().x, m_Data[i].GetPosition().y - 200.0f));
+            }
+
+            // turn off search
             isSearching = false;
         }
     }
@@ -84,8 +99,6 @@ SceneState BogaScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
                 button.hasBeenClicked = false;
                 if (button.name == "Sort")
                 {
-                    m_TextDisplay.emplace_back("Iterations:", 20U, sf::Vector2f(100.0f, 500.0f));
-
                     isSearching = true;
                 }
                 return button.GetSceneState();

@@ -7,13 +7,14 @@ void Helpers::Wait(sf::Time time)
     while (clock.getElapsedTime() < t1);
 }
 
-sf::Vector2f Helpers::GetCenterObjectOnBackgroundPosition(sf::Vector2f backgroundPosition, sf::FloatRect backgroundObjectBounds, sf::FloatRect foregroundObjectBounds)
+sf::Vector2f Helpers::GetCenterPositionOnBackgroundObject(sf::Vector2f backgroundPosition, sf::FloatRect backgroundObjectBounds, sf::FloatRect foregroundObjectBounds)
 {
-    float xPos = (backgroundPosition.x + backgroundObjectBounds.width / 2) - (foregroundObjectBounds.width / 2);
-    float yPos = (backgroundPosition.y + backgroundObjectBounds.height / 2) - (foregroundObjectBounds.height / 1.5);
+    float xPos = (backgroundPosition.x + backgroundObjectBounds.width / 2.0f) - (foregroundObjectBounds.width / 2.0f);
+    float yPos = (backgroundPosition.y + backgroundObjectBounds.height / 2.0f) - (foregroundObjectBounds.height / 1.5f);
     return sf::Vector2f(xPos, yPos);
 }
 
+// Returns the amount of times that a data was wrapped
 int Helpers::OrganizePositions(std::vector<AlgData>& data, sf::Vector2f startingPos, float xIncrement, float yIncrement, bool shouldWrap, float wrapYIncrement, const unsigned int windowHeight, const unsigned int windowWidth)
 {
     int amountWrapped = 0;

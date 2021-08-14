@@ -7,14 +7,16 @@ QuickSort::QuickSort(std::vector<AlgData>& data, AlgInfo& info)
 
 std::vector<AlgData> QuickSort::RunAlgPass()
 {
+	// Create a vector of vectors that will hold each rucursive line of quicksort
 	std::vector<std::vector<AlgData>> displayData;
 
+	// Run Quicksort
 	m_Data = Sort(m_Data, displayData);
 
-	if (IsSorted(m_Data))
-		m_AlgInfo.done = true;
+	// Confirm that data is sorted
+	m_AlgInfo.done = IsSorted(m_Data);
 
-	
+	// Move and orginize the positions on all of the elements from each vector in displayData into a single vector of AlgData
 	std::vector<AlgData> returnData;
 	int j = 0;
 	for (int i = 0; i < displayData.size(); i++)
@@ -30,15 +32,20 @@ std::vector<AlgData> QuickSort::RunAlgPass()
 
 std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, std::vector<std::vector<AlgData>>& displayData)
 {
+	// Base case
 	if (data.size() < 2)
 	{
 		return data;
 	}
+	
+	// Create a pivot in the center
+	AlgData& pivot = data[data.size() / 2 - 1];
 
-	AlgData pivot = data[data.size() / 2 - 1];
-
+	// Create vectors to hold what is greater and less than the pivot
 	std::vector<AlgData> less;
 	std::vector<AlgData> greater;
+
+	// Compare data with pivot
 	for (int i = 0; i < data.size(); i++)
 	{
 		if (i == data.size() / 2 - 1)
@@ -49,6 +56,7 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, std::vector<std
 			greater.push_back(data[i]);
 	}
 
+	// create a vector this will be one line of the visualization
 	std::vector<AlgData> displayLine;
 
 	for (AlgData item : less)
@@ -60,26 +68,18 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, std::vector<std
 	for (AlgData item : greater)
 		displayLine.push_back(item);
 
+	// Push back the line
 	displayData.push_back(displayLine);
 
+	// recursively run quicksort on less and greater vectors
 	std::vector<AlgData> sortedLess = Sort(less, displayData);
 	std::vector<AlgData> sortedGreater = Sort(greater, displayData);
 
+	// combine the data from sortedLess and sortedGreater
 	sortedLess.push_back(pivot);
 	for (AlgData& item : sortedGreater)
 		sortedLess.push_back(item);
-	
-	Helpers::OrganizePositions(sortedLess, sf::Vector2f(0.0f, 100.f));
 
 	return sortedLess;
 }
 
-bool QuickSort::IsSorted(std::vector<AlgData>& data)
-{
-	for (int i = 0; i < data.size() - 1; i++)
-	{
-		if (data[i].GetValue() > data[i + 1].GetValue())
-			return false;
-	}
-	return true;
-}

@@ -10,8 +10,5 @@ public:
 private:
 	std::vector<AlgData>& m_Data;
 	AlgInfo& m_AlgInfo;
-
-private:
-	bool IsSorted(std::vector<AlgData>& data);
 };
 

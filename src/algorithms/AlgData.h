@@ -1,5 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
+#include "TextBox.h"
 
 // this enum determines the color of the data
 enum class State
@@ -19,7 +20,7 @@ private:
     sf::IntRect m_SuccessfullCoords;
 
     sf::Sprite m_Sprite;
-    sf::Text m_Text;
+    TextBox m_Text;
 
     State m_State;
 public:
@@ -33,8 +34,6 @@ public:
     sf::Vector2f GetPosition() const;
 
     int GetValue() const;
-
-    int SetValue(int value);
 
     void SetSearchState(State state);
 };

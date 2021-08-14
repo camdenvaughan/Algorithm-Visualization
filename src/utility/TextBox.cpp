@@ -45,6 +45,11 @@ sf::Vector2f TextBox::GetPosition() const
     return m_Text.getPosition();
 }
 
+sf::FloatRect TextBox::GetLocalBounds() const
+{
+    return m_Text.getLocalBounds();
+}
+
 void TextBox::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
     target.draw(m_Text);

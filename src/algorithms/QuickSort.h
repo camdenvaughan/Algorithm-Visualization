@@ -15,8 +15,5 @@ private:
 
 private:
 	std::vector<AlgData> Sort(std::vector<AlgData>& data, std::vector<std::vector<AlgData>>& displayData);
-
-	bool IsSorted(std::vector<AlgData>& data);
-
 };
 

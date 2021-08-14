@@ -15,6 +15,7 @@ public:
 	void SetFont(sf::Font font);
 
 	sf::Vector2f GetPosition() const;
+	sf::FloatRect GetLocalBounds() const;
 
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 

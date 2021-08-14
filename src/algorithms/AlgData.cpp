@@ -3,23 +3,22 @@
 #include "Helpers.h"
 
 AlgData::AlgData(int value, sf::Vector2f position)
-    : m_Value(value), m_Position(position)
+    : m_Value(value), m_Position(position), m_Text(std::to_string(value))
 {
+    // Set up the texture coordinates for different textures that can be set with States
     m_EmptyTexCoords = sf::IntRect(0, 128, 32, 32);
     m_FilledTexCoords = sf::IntRect(32, 160, 32, 32);
     m_SuccessfullCoords = sf::IntRect(0, 160, 32, 32);
 
-
+    // Setting up Textures
     m_Sprite.setTexture(Resources::GetTexture());
     SetSearchState(State::EMPTY);
+
     m_Sprite.setPosition(position);
 
-    m_Text.setFont(Resources::GetFont());
-    m_Text.setCharacterSize(15.0f);
-    m_Text.setFillColor(sf::Color::White);
-    m_Text.setString(std::to_string(value));
-    m_Text.setOrigin(sf::Vector2f(m_Text.getLocalBounds().width / 2, m_Text.getLocalBounds().height / 2));
-    m_Text.setPosition(Helpers::GetCenterObjectOnBackgroundPosition(position, m_Sprite.getGlobalBounds(), m_Text.getLocalBounds()));
+    // Setting up Value text
+    m_Text.SetCharacterSize(15.0f);
+    m_Text.SetPosition(Helpers::GetCenterPositionOnBackgroundObject(position, m_Sprite.getGlobalBounds(), m_Text.GetLocalBounds()));
 
 };
 
@@ -29,15 +28,15 @@ void AlgData::draw(sf::RenderTarget& target, sf::RenderStates state) const
     target.draw(m_Text);
 }
 
+// Updates position and returns old position;
 sf::Vector2f AlgData::UpdatePosition(sf::Vector2f position)
 {
     sf::Vector2f oldPosition = m_Position;
     m_Position = position;
     m_Sprite.setPosition(position);
-    m_Text.setPosition(Helpers::GetCenterObjectOnBackgroundPosition(position, m_Sprite.getGlobalBounds(), m_Text.getLocalBounds()));
+    m_Text.SetPosition(Helpers::GetCenterPositionOnBackgroundObject(position, m_Sprite.getGlobalBounds(), m_Text.GetLocalBounds()));
     return oldPosition;
 }
-
 
 sf::Vector2f AlgData::GetPosition() const
 {
@@ -48,14 +47,8 @@ int AlgData::GetValue() const
 {
     return m_Value;
 }
-int AlgData::SetValue(int value)
-{
-    int oldValue = m_Value;
-    m_Value = value;
-    m_Text.setString(std::to_string(m_Value));
-    return oldValue;
-}
 
+// Sets which texture is active
 void AlgData::SetSearchState(State state)
 {
     m_State = state;

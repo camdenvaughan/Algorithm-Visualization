@@ -13,16 +13,18 @@ std::vector<AlgData> SelectionSort::RunAlgPass()
 	int i = 0;
 	do
 	{
+		// Check is algorithm is completed
 		if (i == m_AlgInfo.maxIterations)
 		{
 			m_AlgInfo.done = true;
 			return sortedData;
 		}
+
+		// Find the smallest index, push it into sortedData, then erase it from m_Data
 		int smallestIndex = FindSmallest(m_Data);
 		sortedData.push_back(m_Data[smallestIndex]);
 		m_Data.erase(m_Data.begin() + smallestIndex);
 	} while (i++ < m_AlgInfo.searchIterator);
-
 
 	return sortedData;
 }
@@ -31,6 +33,7 @@ std::vector<AlgData> SelectionSort::RunAlgPass()
 
 int SelectionSort::FindSmallest(std::vector<AlgData>& data)
 {
+	// Check vector for the smallest value and return the index
 	int smallest = data[0].GetValue();
 	int smallestIndex = 0;
 	for (int i = 0; i < data.size(); i++)

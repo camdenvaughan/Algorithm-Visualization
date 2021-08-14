@@ -23,5 +23,7 @@ private:
 
 	std::vector<Button> m_Buttons;
 	std::vector<TextBox> m_TextDisplay;
+
+	TextBox* m_IteratorText;
 };
 

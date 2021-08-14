@@ -23,4 +23,14 @@ struct AlgInfo
 class Algorithm 
 {
 	virtual std::vector<AlgData> RunAlgPass() = 0;
+public:
+	bool IsSorted(std::vector<AlgData>& data)
+	{
+		for (int i = 0; i < data.size() - 1; i++)
+		{
+			if (data[i].GetValue() > data[i + 1].GetValue())
+				return false;
+		}
+		return true;
+	}
 };
