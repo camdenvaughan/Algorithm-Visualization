@@ -4,11 +4,12 @@
 
 #include "Resources.h"
 #include "Button.h"
+#include "TextBox.h"
 
 // Enum handling current scene
 enum class SceneState
 {
-	DEFAULT, CLOSE, MENU, BINARY, SIMPLE, SELECTION, QUICK
+	DEFAULT, CLOSE, MENU, BINARY, SIMPLE, SELECTION, QUICK, BOGA
 };
 
 class Scene : public sf::Drawable

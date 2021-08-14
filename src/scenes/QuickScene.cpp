@@ -5,25 +5,15 @@
 
 
 QuickScene::QuickScene(unsigned int windowWidth, unsigned int windowHeight)
-    : m_Search(QuickSort(m_Data))
+    : m_Alg(QuickSort(m_Data, m_AlgInfo))
 {
     // Set Up Text
-    sf::Text text;
-    text.setFont(Resources::GetFont());
-    text.setCharacterSize(40);
-    text.setString("Quick Sort");
-    text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-    text.setPosition(sf::Vector2f(windowWidth / 2, 50.0f));
-    m_TextDisplay.push_back(text);
+    m_TextDisplay.emplace_back("Quick Sort", 40U, sf::Vector2f(windowWidth / 2, 50.0f));
 
     // Set Up Buttons
-    m_Buttons.emplace_back("Sort", SceneState::DEFAULT);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, windowHeight - 100.0f));
-    m_Buttons.emplace_back("Back", SceneState::MENU);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 4, windowHeight - 100.0f));
-    m_Buttons.emplace_back("Randomize", SceneState::QUICK);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth - (windowWidth / 4), windowHeight - 100.0f));
-
+    m_Buttons.emplace_back("Sort", sf::Vector2f(windowWidth / 2, windowHeight - 100.0f), SceneState::DEFAULT);
+    m_Buttons.emplace_back("Back", sf::Vector2f(windowWidth / 4, windowHeight - 100.0f), SceneState::MENU);
+    m_Buttons.emplace_back("Randomize", sf::Vector2f(windowWidth - (windowWidth / 4), windowHeight - 100.0f), SceneState::QUICK);
 
     // Reserve Space in Vector
     m_Data.reserve(100);
@@ -43,36 +33,33 @@ void QuickScene::OnUpdate(float deltaTime)
 {
     if (isSearching)
     {
-        std::vector<AlgData> copyData = m_Data;
         isSearching = false;
 
-        std::vector<AlgData> sortedData = m_Search.RunAlgPass(m_AlgInfo);
+        // Create a copy of m_Data
+        std::vector<AlgData> copyData = m_Data;
 
-        m_TextDisplay[0].setString("Sorted Data");
+        // Create a vector with the return of the algorithm pass for QuickSort
+        std::vector<AlgData> sortedData = m_Alg.RunAlgPass();
 
-        sf::Text text;
-        text.setFont(Resources::GetFont());
-        text.setCharacterSize(40);
-        text.setString("Old Data");
-        text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-        text.setPosition(sf::Vector2f(m_TextDisplay.back().getPosition().x, 250.0f));
-        m_TextDisplay.push_back(text);
-        text.setString("Sub Arrays and Pivots (Pivots are Red)");
-        text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-        text.setPosition(sf::Vector2f(text.getPosition().x, 445.0f));
-        m_TextDisplay.push_back(text);
-        text.setCharacterSize(20);
-        text.setString("Scroll to see all");
-        text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-        text.setPosition(sf::Vector2f(text.getPosition().x, text.getPosition().y + 35));
-        m_TextDisplay.push_back(text);
+        // Change top text
+        m_TextDisplay[0].SetString("Sorted Data");
+
+        // Create new text
+        m_TextDisplay.emplace_back("Old Data", 40U, sf::Vector2f(m_TextDisplay.back().GetPosition().x, 250.0f));
+        m_TextDisplay.emplace_back("Sub Arrays and Pivots(Pivots are Red)", 40U, sf::Vector2f(m_TextDisplay.back().GetPosition().x, 445.0f));
+        m_TextDisplay.emplace_back("Scroll to see all", 20U, sf::Vector2f(m_TextDisplay.back().GetPosition().x, 480.0f));
 
         for (int i = 0; i < copyData.size(); i++)
         {
+            // Move original data values to a position under sorted values in m_Data
             sf::Vector2f position(copyData[i].GetPosition().x, copyData[i].GetPosition().y + 200.0f);
             copyData[i].UpdatePosition(position);
             copyData[i].SetSearchState(State::EMPTY);
+
+            // Add copy data values to back of m_Data for rendering
             m_Data.push_back(copyData[i]);
+
+            // Set the color of the sorted data
             m_Data[i].SetSearchState(State::FOUND);
         }
         m_Data.insert(m_Data.end(), sortedData.begin(), sortedData.end());
@@ -81,7 +68,7 @@ void QuickScene::OnUpdate(float deltaTime)
 
 void QuickScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
-    for (const sf::Text& text : m_TextDisplay)
+    for (const TextBox& text : m_TextDisplay)
         target.draw(text);
     for (const AlgData& item : m_Data)
         target.draw(item);
@@ -91,19 +78,11 @@ void QuickScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 
 SceneState QuickScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
 {
-
-    if (event.type == sf::Event::KeyReleased)
-    {
-        //keyboard input
-        if (event.key.code == sf::Keyboard::M)
-            return SceneState::MENU;        
-        if (event.key.code == sf::Keyboard::Space)
-            isSearching = true;
-    }
-
+    // Check for events
     if (event.type == sf::Event::Closed)
         return SceneState::CLOSE;
 
+    // Check for Button input
     for (Button& button : m_Buttons)
     {
         if (button.MouseIsOver(mousePos))
@@ -123,6 +102,7 @@ SceneState QuickScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
         }
     }
 
+    // Check for scrolling
     if (event.type == sf::Event::MouseWheelScrolled && m_AlgInfo.done)
     {
         if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
@@ -131,30 +111,26 @@ SceneState QuickScene::PollEvents(sf::Event& event, sf::Vector2i mousePos)
         }
     }
 
-    if (event.type == sf::Event::KeyReleased)
-    {
-        //keyboard input
-        if (event.key.code == sf::Keyboard::Space)
-            return SceneState::QUICK;
-    }
-
     return SceneState::DEFAULT;
 }
 
 void QuickScene::ScrollScreen(float scrollDelta)
 {
-    //if (m_TextDisplay[0].getPosition().y > 50.0f)
-    //{
-    //    m_TextDisplay[0].setPosition(sf::Vector2f(m_TextDisplay[0].getPosition().x, 50.0f));
-    //    return;
-    //} 
-    //if (m_Data.back().GetPosition().y < 50.0f)
-    //{
-    //    m_Data.back().UpdatePosition(sf::Vector2f(m_Data.back().GetPosition().x, 50.0f));
-    //    return;
-    //}
+    // Stop user from scrolling elements off of the screen
+    if (m_TextDisplay[0].GetPosition().y >= 50.0f && scrollDelta > 0)
+    {
+        m_TextDisplay[0].SetPosition(sf::Vector2f(m_TextDisplay[0].GetPosition().x, 50.0f));
+        return;
+    } 
+    if (m_Data.back().GetPosition().y <= 50.0f && scrollDelta < 0)
+    {
+        m_Data.back().UpdatePosition(sf::Vector2f(m_Data.back().GetPosition().x, 50.0f));
+        return;
+    }
+
+    // Update positions with the scroll delta
     for (AlgData& item : m_Data)
         item.UpdatePosition(sf::Vector2f(item.GetPosition().x, item.GetPosition().y + (scrollDelta)));
-    for (sf::Text& text : m_TextDisplay)
-        text.setPosition(sf::Vector2f(text.getPosition().x, text.getPosition().y + (scrollDelta)));
+    for (TextBox& text : m_TextDisplay)
+        text.SetPosition(sf::Vector2f(text.GetPosition().x, text.GetPosition().y + (scrollDelta)));
 }

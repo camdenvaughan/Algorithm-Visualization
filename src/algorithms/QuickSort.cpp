@@ -1,20 +1,18 @@
 #include "QuickSort.h"
 
-QuickSort::QuickSort(std::vector<AlgData>& data)
-	: m_Data(data), m_Step(0)
+QuickSort::QuickSort(std::vector<AlgData>& data, AlgInfo& info)
+	: m_Data(data), m_AlgInfo(info)
 {
 }
 
-std::vector<AlgData> QuickSort::RunAlgPass(AlgInfo& info)
+std::vector<AlgData> QuickSort::RunAlgPass()
 {
-	m_Step = 0;
-
 	std::vector<std::vector<AlgData>> displayData;
 
-	m_Data = Sort(m_Data, info, displayData);
+	m_Data = Sort(m_Data, displayData);
 
 	if (IsSorted(m_Data))
-		info.done = true;
+		m_AlgInfo.done = true;
 
 	
 	std::vector<AlgData> returnData;
@@ -30,7 +28,7 @@ std::vector<AlgData> QuickSort::RunAlgPass(AlgInfo& info)
 }
 
 
-std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, AlgInfo& info, std::vector<std::vector<AlgData>>& displayData)
+std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, std::vector<std::vector<AlgData>>& displayData)
 {
 	if (data.size() < 2)
 	{
@@ -38,7 +36,7 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, AlgInfo& info, 
 	}
 
 	AlgData pivot = data[data.size() / 2 - 1];
-	m_Step++;
+
 	std::vector<AlgData> less;
 	std::vector<AlgData> greater;
 	for (int i = 0; i < data.size(); i++)
@@ -64,8 +62,8 @@ std::vector<AlgData> QuickSort::Sort(std::vector<AlgData>& data, AlgInfo& info, 
 
 	displayData.push_back(displayLine);
 
-	std::vector<AlgData> sortedLess = Sort(less, info, displayData);
-	std::vector<AlgData> sortedGreater = Sort(greater, info, displayData);
+	std::vector<AlgData> sortedLess = Sort(less, displayData);
+	std::vector<AlgData> sortedGreater = Sort(greater, displayData);
 
 	sortedLess.push_back(pivot);
 	for (AlgData& item : sortedGreater)

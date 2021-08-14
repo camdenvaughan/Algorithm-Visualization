@@ -3,24 +3,15 @@
 
 
 BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
-    : m_Search(BinarySearch(m_Data))
+    : m_Alg(BinarySearch(m_Data, m_AlgInfo))
 {
     // Set Up Text
-    sf::Text text;
-    text.setFont(Resources::GetFont());
-    text.setCharacterSize(40);
-    text.setString("Binary Search");
-    text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-    text.setPosition(sf::Vector2f(windowWidth / 2, 50.0f));
-    m_TextDisplay.push_back(text);
+    m_TextDisplay.emplace_back("Binary Search", 40U, sf::Vector2f(windowWidth / 2, 50.0f));
 
     // Set Up Buttons
-    m_Buttons.emplace_back("Start Search", SceneState::DEFAULT);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, windowHeight - 100.0f));
-    m_Buttons.emplace_back("Back", SceneState::MENU);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 4, windowHeight - 100.0f));
-    m_Buttons.emplace_back("Reset", SceneState::BINARY);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth - (windowWidth / 4), windowHeight - 100.0f));
+    m_Buttons.emplace_back("Start Search", sf::Vector2f(windowWidth / 2, windowHeight - 100.0f), SceneState::DEFAULT);
+    m_Buttons.emplace_back("Back", sf::Vector2f(windowWidth / 4, windowHeight - 100.0f), SceneState::MENU);
+    m_Buttons.emplace_back("Reset", sf::Vector2f(windowWidth - (windowWidth / 4), windowHeight - 100.0f), SceneState::BINARY);
 
 
     // Reserve Space in vector
@@ -36,7 +27,9 @@ BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
     // Set up algorithm info
     m_AlgInfo.low = 0;
     m_AlgInfo.high = m_Data.size();
-    m_AlgInfo.value = 98;
+
+    // Set search value for 2 less than vector size for worst case scenario.
+    m_AlgInfo.value = m_Data.size() - 2;
 }
 
 void BinaryScene::OnUpdate(float deltaTime)
@@ -46,7 +39,7 @@ void BinaryScene::OnUpdate(float deltaTime)
     {
         Helpers::Wait(sf::milliseconds(100)); // wait for 100 milliseconds in order to slow down and visualize the search
 
-        m_Search.RunAlgPass(m_AlgInfo);
+        m_Alg.RunAlgPass();
         if (m_AlgInfo.done)
             isSearching = false;
     }
@@ -56,7 +49,7 @@ void BinaryScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
     for (const AlgData& item : m_Data)
         target.draw(item);
-    for (const sf::Text& text : m_TextDisplay)
+    for (const TextBox& text : m_TextDisplay)
         target.draw(text);
     for (const Button& button : m_Buttons)
         target.draw(button);

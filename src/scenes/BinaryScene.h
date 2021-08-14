@@ -17,11 +17,11 @@ private:
 
 	std::vector<AlgData> m_Data;
 
-	BinarySearch m_Search;
+	BinarySearch m_Alg;
 	AlgInfo m_AlgInfo;
 
 
 	std::vector<Button> m_Buttons;
-	std::vector<sf::Text> m_TextDisplay;
+	std::vector<TextBox> m_TextDisplay;
 };
 

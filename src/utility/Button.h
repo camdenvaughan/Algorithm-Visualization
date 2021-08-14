@@ -9,7 +9,7 @@ enum class SceneState;
 class Button : public sf::Drawable
 {
 public:
-	Button(std::string text, SceneState sceneState, unsigned int fontSize = 25, sf::IntRect defaultTextureCoords = sf::IntRect(0, 0, 192, 64), sf::IntRect clickTextureCoords = sf::IntRect(0, 64, 192, 64), sf::IntRect hoverTextureCoords = sf::IntRect(192, 0, 192, 64), sf::Color textColor = sf::Color::White);
+	Button(std::string text, sf::Vector2f position, SceneState sceneState, unsigned int fontSize = 25, sf::IntRect defaultTextureCoords = sf::IntRect(0, 0, 192, 64), sf::IntRect clickTextureCoords = sf::IntRect(0, 64, 192, 64), sf::IntRect hoverTextureCoords = sf::IntRect(192, 0, 192, 64), sf::Color textColor = sf::Color::White);
 	
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 

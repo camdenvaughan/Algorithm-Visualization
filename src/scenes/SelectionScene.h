@@ -19,10 +19,10 @@ private:
 	std::vector<AlgData> m_CopyData;
 	std::vector<AlgData> m_SortedData;
 
-	SelectionSort m_Search;
+	SelectionSort m_Alg;
 	AlgInfo m_AlgInfo;
 
 	std::vector<Button> m_Buttons;
-	std::vector<sf::Text> m_TextDisplay;
+	std::vector<TextBox> m_TextDisplay;
 };
 

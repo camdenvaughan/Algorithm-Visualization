@@ -22,5 +22,5 @@ struct AlgInfo
 // pure virtual function for algorithms
 class Algorithm 
 {
-	virtual std::vector<AlgData> RunAlgPass(AlgInfo& info) = 0;
+	virtual std::vector<AlgData> RunAlgPass() = 0;
 };

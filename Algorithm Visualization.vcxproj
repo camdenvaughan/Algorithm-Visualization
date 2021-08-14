@@ -153,6 +153,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\algorithms\BogaSort.cpp" />
+    <ClCompile Include="src\scenes\BogaScene.cpp" />
     <ClCompile Include="src\utility\Button.cpp" />
     <ClCompile Include="src\scenes\BinaryScene.cpp" />
     <ClCompile Include="src\scenes\MenuScene.cpp" />
@@ -167,8 +169,11 @@
     <ClCompile Include="src\utility\Resources.cpp" />
     <ClCompile Include="src\scenes\SelectionScene .cpp" />
     <ClCompile Include="src\scenes\SimpleScene.cpp" />
+    <ClCompile Include="src\utility\TextBox.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\algorithms\BogaSort.h" />
+    <ClInclude Include="src\scenes\BogaScene.h" />
     <ClInclude Include="src\utility\Button.h" />
     <ClInclude Include="src\scenes\BinaryScene.h" />
     <ClInclude Include="src\scenes\MenuScene.h" />
@@ -184,6 +189,7 @@
     <ClInclude Include="src\utility\Resources.h" />
     <ClInclude Include="src\scenes\SelectionScene.h" />
     <ClInclude Include="src\scenes\SimpleScene.h" />
+    <ClInclude Include="src\utility\TextBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

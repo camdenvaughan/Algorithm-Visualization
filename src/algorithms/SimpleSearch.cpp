@@ -3,23 +3,23 @@
 #include <iostream>
 
 
-SimpleSearch::SimpleSearch(std::vector<AlgData>& data)
-	: m_Data(data)
+SimpleSearch::SimpleSearch(std::vector<AlgData>& data, AlgInfo& info)
+	: m_Data(data), m_AlgInfo(info)
 {
 }
 
-std::vector<AlgData> SimpleSearch::RunAlgPass(AlgInfo& info)
+std::vector<AlgData> SimpleSearch::RunAlgPass()
 {
-	if (m_Data[info.searchIterator].GetValue() == info.value)
+	if (m_Data[m_AlgInfo.searchIterator].GetValue() == m_AlgInfo.value)
 	{
-		m_Data[info.searchIterator].SetSearchState(State::FOUND);
-		info.done = true;
+		m_Data[m_AlgInfo.searchIterator].SetSearchState(State::FOUND);
+		m_AlgInfo.done = true;
 		return m_Data;
 	}
-	m_Data[info.searchIterator++].SetSearchState(State::SEARCHING);
-	if (info.searchIterator < m_Data.size())
+	m_Data[m_AlgInfo.searchIterator++].SetSearchState(State::SEARCHING);
+	if (m_AlgInfo.searchIterator < m_Data.size())
 		return m_Data;
 	
-	info.isNotInContainer = true;
+	m_AlgInfo.isNotInContainer = true;
 	return m_Data;
 }

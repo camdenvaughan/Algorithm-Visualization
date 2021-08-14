@@ -14,6 +14,6 @@ private:
 	unsigned int m_WindowHeight;
 
 	std::vector<Button> m_Buttons;
-	std::vector<sf::Text> m_TextDisplay;
+	std::vector<TextBox> m_TextDisplay;
 };
 

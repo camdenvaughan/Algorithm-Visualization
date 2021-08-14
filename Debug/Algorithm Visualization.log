@@ -1,25 +1,161 @@
-﻿  QuickScene.cpp
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(16,47): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+﻿  Application.cpp
+  BinaryScene.cpp
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BinaryScene.cpp(9,79): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(21,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BinaryScene.cpp(12,69): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(23,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BinaryScene.cpp(13,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(25,59): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BinaryScene.cpp(14,62): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(32,23): warning C4018: '<': signed/unsigned mismatch
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(36,87): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(70,27): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BinaryScene.cpp(21,23): warning C4018: '<': signed/unsigned mismatch
+  BogaScene.cpp
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BogaScene.cpp(11,75): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BogaScene.cpp(14,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BogaScene.cpp(15,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BogaScene.cpp(16,62): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BogaScene.cpp(23,23): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\BogaScene.cpp(27,103): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MenuScene.cpp
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(9,86): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(10,83): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(13,70): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(14,70): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(15,71): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(16,67): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(17,66): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\MenuScene.cpp(18,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  QuickScene.cpp
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(11,76): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(14,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(15,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(16,66): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(22,23): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(26,87): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(52,27): warning C4018: '<': signed/unsigned mismatch
+  SelectionScene .cpp
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(11,80): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(14,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(15,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(16,66): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(23,23): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(27,87): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SelectionScene .cpp(70,31): warning C4018: '<': signed/unsigned mismatch
+  SimpleScene.cpp
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SimpleScene.cpp(9,79): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SimpleScene.cpp(12,69): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SimpleScene.cpp(13,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SimpleScene.cpp(14,62): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\SimpleScene.cpp(19,23): warning C4018: '<': signed/unsigned mismatch
+  Button.cpp
+  Generating Code...
+  LINK : E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe not found or not built by the last incremental link; performing full link
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

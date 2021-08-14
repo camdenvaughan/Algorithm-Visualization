@@ -1,11 +1,12 @@
 #include <SFML/Graphics.hpp>
 
 #include "Resources.h"
+#include "MenuScene.h"
 #include "BinaryScene.h"
 #include "SimpleScene.h"
 #include "SelectionScene.h"
 #include "QuickScene.h"
-#include "MenuScene.h"
+#include "BogaScene.h"
 
 int main()
 {
@@ -58,6 +59,9 @@ int main()
                 delete activeScene;
                 activeScene = new QuickScene(windowWidth, windowHeight);
                 break;
+            case SceneState::BOGA:
+                delete activeScene;
+                activeScene = new BogaScene(windowWidth, windowHeight);
             }
         }
 

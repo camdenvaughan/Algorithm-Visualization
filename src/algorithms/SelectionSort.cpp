@@ -1,27 +1,27 @@
 #include "SelectionSort.h"
 
-SelectionSort::SelectionSort(std::vector<AlgData>& data)
-	: m_Data(data)
+SelectionSort::SelectionSort(std::vector<AlgData>& data, AlgInfo& info)
+	: m_Data(data), m_AlgInfo(info)
 {
 }
 
-std::vector<AlgData> SelectionSort::RunAlgPass(AlgInfo& info)
+std::vector<AlgData> SelectionSort::RunAlgPass()
 {
 	std::vector<AlgData> sortedData;
-	sortedData.reserve(info.maxIterations);
+	sortedData.reserve(m_AlgInfo.maxIterations);
 
 	int i = 0;
 	do
 	{
-		if (i == info.maxIterations)
+		if (i == m_AlgInfo.maxIterations)
 		{
-			info.done = true;
+			m_AlgInfo.done = true;
 			return sortedData;
 		}
 		int smallestIndex = FindSmallest(m_Data);
 		sortedData.push_back(m_Data[smallestIndex]);
 		m_Data.erase(m_Data.begin() + smallestIndex);
-	} while (i++ < info.searchIterator);
+	} while (i++ < m_AlgInfo.searchIterator);
 
 
 	return sortedData;

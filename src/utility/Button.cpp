@@ -2,7 +2,7 @@
 #include "Helpers.h"
 #include "Resources.h"
 
-Button::Button(std::string text, SceneState sceneState, unsigned int fontSize, sf::IntRect defaultTextureCoords, sf::IntRect clickTextureCoords, sf::IntRect hoverTextureCoords, sf::Color textColor)
+Button::Button(std::string text, sf::Vector2f position, SceneState sceneState, unsigned int fontSize, sf::IntRect defaultTextureCoords, sf::IntRect clickTextureCoords, sf::IntRect hoverTextureCoords, sf::Color textColor)
 	: name(text), m_SceneState(sceneState), m_DefaultTexCoord(defaultTextureCoords), m_ClickTexCoord(clickTextureCoords), m_HoverTexCoord(hoverTextureCoords)
 {
 	m_Sprite.setTexture(Resources::GetTexture());
@@ -14,7 +14,7 @@ Button::Button(std::string text, SceneState sceneState, unsigned int fontSize, s
 	m_Text.setCharacterSize(fontSize);
 	m_Text.setString(text);
 	m_Text.setOrigin(sf::Vector2f(m_Text.getLocalBounds().width / 2, m_Text.getLocalBounds().height / 2));
-	m_Text.setPosition(m_Sprite.getPosition());
+	SetPosition(position);
 }
 
 void Button::draw(sf::RenderTarget& target, sf::RenderStates state) const

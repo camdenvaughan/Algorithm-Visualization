@@ -2,31 +2,31 @@
 
 #include <iostream>
 
-BinarySearch::BinarySearch(std::vector<AlgData>& data)
-    : m_Data(data)
+BinarySearch::BinarySearch(std::vector<AlgData>& data, AlgInfo& info)
+    : m_Data(data), m_AlgInfo(info)
 {
 }
 
-std::vector<AlgData> BinarySearch::RunAlgPass(AlgInfo& info)
+std::vector<AlgData> BinarySearch::RunAlgPass()
 {
-    int mid = (info.low + info.high) / 2;
-    if (m_Data[mid].GetValue() == info.value)
+    int mid = (m_AlgInfo.low + m_AlgInfo.high) / 2;
+    if (m_Data[mid].GetValue() == m_AlgInfo.value)
     {
         m_Data[mid].SetSearchState(State::FOUND);
-        info.done = true;
+        m_AlgInfo.done = true;
         return m_Data;
     }
 
     m_Data[mid].SetSearchState(State::SEARCHING);
 
 
-    if (m_Data[mid].GetValue() > info.value)
+    if (m_Data[mid].GetValue() > m_AlgInfo.value)
     {
-        info.high = mid - 1;
+        m_AlgInfo.high = mid - 1;
     }
     else
     {
-        info.low = mid + 1;
+        m_AlgInfo.low = mid + 1;
     }
     return m_Data;
 }

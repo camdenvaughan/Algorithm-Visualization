@@ -6,30 +6,16 @@ MenuScene::MenuScene(unsigned int windowWidth, unsigned int windowHeight)
     : m_WindowWidth(windowWidth), m_WindowHeight(windowHeight)
 {
     // Setup Text
-    sf::Text text;
-    text.setFont(Resources::GetFont());
-    text.setCharacterSize(40);
-    text.setString("Algorithm Visualizer");
-    text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-    text.setPosition(sf::Vector2f(windowWidth / 2, 50.0f));
-    m_TextDisplay.push_back(text);
-    text.setString("by Camden Vaughan");
-    text.setCharacterSize(20);
-    text.setOrigin(sf::Vector2f(text.getLocalBounds().width / 2, text.getLocalBounds().height / 2));
-    text.setPosition(sf::Vector2f(windowWidth / 2, 100.0f));
-    m_TextDisplay.push_back(text);
+    m_TextDisplay.emplace_back("Algorithm Visualizer", 40U, sf::Vector2f(windowWidth / 2, 50.0f));
+    m_TextDisplay.emplace_back("by Camden Vaughan", 20U, sf::Vector2f(windowWidth / 2, 100.0f));
 
     // Setup Buttons
-    m_Buttons.emplace_back("Binary Search", SceneState::BINARY);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 200.0f));
-    m_Buttons.emplace_back("Simple Search", SceneState::SIMPLE);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 300.0f));
-    m_Buttons.emplace_back("Selection Sort", SceneState::SELECTION);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 400.0f));
-    m_Buttons.emplace_back("Quick Sort", SceneState::QUICK);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 500.0f));
-    m_Buttons.emplace_back("Quit", SceneState::CLOSE);
-    m_Buttons.back().SetPosition(sf::Vector2f(windowWidth / 2, 600.0f));
+    m_Buttons.emplace_back("Binary Search", sf::Vector2f(windowWidth / 2, 200.0f), SceneState::BINARY);
+    m_Buttons.emplace_back("Simple Search", sf::Vector2f(windowWidth / 2, 300.0f), SceneState::SIMPLE);
+    m_Buttons.emplace_back("Selection Sort", sf::Vector2f(windowWidth / 2, 400.0f), SceneState::SELECTION);
+    m_Buttons.emplace_back("Quick Sort", sf::Vector2f(windowWidth / 2, 500.0f), SceneState::QUICK);
+    m_Buttons.emplace_back("Boga Sort", sf::Vector2f(windowWidth / 2, 600.0f), SceneState::BOGA);
+    m_Buttons.emplace_back("Quit", sf::Vector2f(windowWidth / 2, 700.0f), SceneState::CLOSE);
 }
 
 void MenuScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
@@ -37,7 +23,7 @@ void MenuScene::draw(sf::RenderTarget& target, sf::RenderStates state) const
     for (const Button& button : m_Buttons)
         target.draw(button);
 
-    for (const sf::Text& text : m_TextDisplay)
+    for (const TextBox& text : m_TextDisplay)
         target.draw(text);
 }
 

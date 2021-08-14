@@ -20,10 +20,10 @@ private:
 
 	std::vector<AlgData> m_Data;
 
-	QuickSort m_Search;
+	QuickSort m_Alg;
 	AlgInfo m_AlgInfo;
 
 	std::vector<Button> m_Buttons;
-	std::vector<sf::Text> m_TextDisplay;
+	std::vector<TextBox> m_TextDisplay;
 };
 
