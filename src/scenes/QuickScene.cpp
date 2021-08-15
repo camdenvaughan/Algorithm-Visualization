@@ -29,7 +29,7 @@ QuickScene::QuickScene(unsigned int windowWidth, unsigned int windowHeight)
     Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 100.f));
 }
 
-void QuickScene::OnUpdate(float deltaTime)
+void QuickScene::OnUpdate()
 {
     if (isSearching)
     {
@@ -49,6 +49,7 @@ void QuickScene::OnUpdate(float deltaTime)
         m_TextDisplay.emplace_back("Sub Arrays and Pivots(Pivots are Red)", 40U, sf::Vector2f(m_TextDisplay.back().GetPosition().x, 445.0f));
         m_TextDisplay.emplace_back("Scroll to see all", 20U, sf::Vector2f(m_TextDisplay.back().GetPosition().x, 480.0f));
 
+        Helpers::OrganizePositions(m_Data, sf::Vector2f(0.0f, 100.0f));
         for (int i = 0; i < copyData.size(); i++)
         {
             // Move original data values to a position under sorted values in m_Data

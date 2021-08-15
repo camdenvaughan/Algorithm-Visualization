@@ -32,7 +32,7 @@ BinaryScene::BinaryScene(unsigned int windowWidth, unsigned int windowHeight)
     m_AlgInfo.value = m_Data.size() - 2;
 }
 
-void BinaryScene::OnUpdate(float deltaTime)
+void BinaryScene::OnUpdate()
 {
     // If the search has started, run the algorithm pass, check if search has finished
     if (isSearching)

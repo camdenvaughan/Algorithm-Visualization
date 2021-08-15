@@ -66,10 +66,10 @@ int main()
         }
 
         // run the active scenes Update Method
-        activeScene->OnUpdate(1);
+        activeScene->OnUpdate();
 
         // Draw to window
-        window.clear(sf::Color(110, 181, 129));
+        window.clear(sf::Color(132, 177, 184));
         window.draw(*activeScene);
         window.display();
     }

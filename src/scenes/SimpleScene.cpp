@@ -24,7 +24,7 @@ SimpleScene::SimpleScene(unsigned int windowWidth, unsigned int windowHeight)
     m_AlgInfo.value = m_Data.size() - 1;
 }
 
-void SimpleScene::OnUpdate(float deltaTime)
+void SimpleScene::OnUpdate()
 {
     
     if (isSearching)

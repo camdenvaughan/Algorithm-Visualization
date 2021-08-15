@@ -8,7 +8,7 @@ class SelectionScene : public Scene
 public:
 	SelectionScene(unsigned int windowWidth, unsigned int windowHeight);
 
-	void OnUpdate(float deltaTime) override;
+	void OnUpdate() override;
 	void draw(sf::RenderTarget& target, sf::RenderStates state) const override;
 	SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) override;
 

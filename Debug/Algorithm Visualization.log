@@ -1,5 +1,26 @@
-﻿  QuickSort.cpp
+﻿  QuickScene.cpp
 E:\C++ Projects\Algorithm-Visualization\src\algorithms\Algorithm.h(29,21): warning C4018: '<': signed/unsigned mismatch
-E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(20,20): warning C4018: '<': signed/unsigned mismatch
-E:\C++ Projects\Algorithm-Visualization\src\algorithms\QuickSort.cpp(47,20): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(11,76): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(14,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(15,61): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(16,66): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(22,23): warning C4018: '<': signed/unsigned mismatch
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(26,87): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+E:\C++ Projects\Algorithm-Visualization\src\scenes\QuickScene.cpp(53,27): warning C4018: '<': signed/unsigned mismatch
   Algorithm Visualization.vcxproj -> E:\C++ Projects\Algorithm-Visualization\Debug\Algorithm Visualization.exe

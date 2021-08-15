@@ -19,7 +19,7 @@ public:
 	Scene() {}
 	virtual ~Scene() {}
 
-	virtual void OnUpdate(float deltaTime) {}
+	virtual void OnUpdate() {}
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates state) const {}
 	virtual SceneState PollEvents(sf::Event& event, sf::Vector2i mousePos) { return SceneState::DEFAULT; }
 

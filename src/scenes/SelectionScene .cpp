@@ -36,7 +36,7 @@ SelectionScene::SelectionScene(unsigned int windowWidth, unsigned int windowHeig
     m_AlgInfo.maxIterations = m_Data.size();
 }
 
-void SelectionScene::OnUpdate(float deltaTime)
+void SelectionScene::OnUpdate()
 {
     if (isSearching)
     {

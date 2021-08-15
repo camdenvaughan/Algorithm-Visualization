@@ -35,7 +35,7 @@ BogaScene::BogaScene(unsigned int windowWidth, unsigned int windowHeight)
     m_Data = m_OriginalData;
 }
 
-void BogaScene::OnUpdate(float deltaTime)
+void BogaScene::OnUpdate()
 {
     if (isSearching)
     {
